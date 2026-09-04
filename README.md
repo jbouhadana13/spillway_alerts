@@ -6,7 +6,7 @@ Checks 10 coastal South Florida structures every 5 minutes using MacVicar Consul
 
 - S46 — Jupiter
 - S44 — North Palm Beach
-- S155 — West Palm Beach
+- S155 — Lake Worth
 - S41 — Boynton Beach
 - S40 — Delray Beach
 - S37A — Pompano Beach
