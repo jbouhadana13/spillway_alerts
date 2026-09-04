@@ -174,4 +174,9 @@ def main():
 
 
 if __name__ == "__main__":
+    ntfy(
+        "SPILLWAY ALERT TEST",
+        "Success! GitHub Actions is connected to ntfy and alerts are working.",
+        priority="high"
+    )
     main()
