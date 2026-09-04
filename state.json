@@ -1,1 +1,26 @@
-{}
+{
+  "S155": {
+    "above": true
+  },
+  "S37A": {
+    "above": true
+  },
+  "S40": {
+    "above": true
+  },
+  "S41": {
+    "above": true
+  },
+  "S44": {
+    "above": false
+  },
+  "S46": {
+    "above": true
+  },
+  "S49": {
+    "above": true
+  },
+  "S99": {
+    "above": true
+  }
+}
