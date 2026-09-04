@@ -30,14 +30,14 @@ jobs:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
         run: python monitor.py
 
-      - name: Save spillway state
+      - name: Save spillway state and history
         run: |
-          if [[ -n "$(git status --porcelain state.json)" ]]; then
+          if [[ -n "$(git status --porcelain state.json spillway_history.json)" ]]; then
             git config user.name "spillway-alert-bot"
             git config user.email "spillway-alert-bot@users.noreply.github.com"
-            git add state.json
-            git commit -m "Update spillway state"
+            git add state.json spillway_history.json
+            git commit -m "Update spillway state and history"
             git push
           else
-            echo "No state change."
+            echo "No state or history change."
           fi
