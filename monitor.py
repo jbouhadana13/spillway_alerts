@@ -9,7 +9,7 @@ SOURCE_URL = "https://www.macvicarconsulting.com/readings/readingsmobil.htm"
 NTFY_TOPIC = os.environ["NTFY_TOPIC"]
 STATE_FILE = Path("state.json")
 
-# Notify whenever flow changes by this amount or more.
+# Alert when flow moves this much from the last alert/baseline.
 CHANGE_THRESHOLD = 20
 
 SPILLWAYS = {
@@ -114,7 +114,7 @@ def ntfy(title, message, priority="high"):
 
 
 def fmt_flow(x):
-    return str(int(x)) if x.is_integer() else f"{x:g}"
+    return str(int(x)) if float(x).is_integer() else f"{x:g}"
 
 
 def main():
@@ -137,42 +137,53 @@ def main():
         r = readings[site]
         current_flow = r["flow"]
 
-        previous_flow = old_state.get(site, {}).get("flow")
+        # Get the last alert/baseline flow.
+        baseline = old_state.get(site, {}).get("baseline")
+
+        # If this structure has no baseline yet, establish one.
+        if baseline is None:
+            new_state[site] = {
+                "baseline": current_flow
+            }
+
+            print(
+                f"{site} {cfg['name']}: "
+                f"flow={current_flow} "
+                f"baseline established={current_flow}"
+            )
+            continue
+
+        baseline = float(baseline)
+        change = current_flow - baseline
 
         print(
             f"{site} {cfg['name']}: "
             f"flow={current_flow} "
-            f"up={r['upstream']} "
-            f"down={r['downstream']} "
-            f"previous={previous_flow}"
+            f"baseline={baseline} "
+            f"change={change:+g}"
         )
 
-        # First observation establishes the baseline.
-        if previous_flow is not None:
+        # Alert if flow has moved 20+ CFS from the last baseline.
+        if abs(change) >= CHANGE_THRESHOLD:
 
-            previous_flow = float(previous_flow)
-            change = current_flow - previous_flow
+            direction = "INCREASED" if change > 0 else "DECREASED"
+            sign = "+" if change > 0 else ""
 
-            if abs(change) >= CHANGE_THRESHOLD:
+            ntfy(
+                f"{site} {cfg['name']} {direction} {abs(change):g} CFS",
+                f"{site} {cfg['name']}\n\n"
+                f"Previous baseline: {fmt_flow(baseline)} CFS\n"
+                f"Current flow: {fmt_flow(current_flow)} CFS\n"
+                f"Change: {sign}{change:g} CFS\n\n"
+                f"Upstream: {r['upstream']:g} ft\n"
+                f"Downstream: {r['downstream']:g} ft\n\n"
+                f"Source: MacVicar Consulting"
+            )
 
-                direction = "INCREASED" if change > 0 else "DECREASED"
-                sign = "+" if change > 0 else ""
-
-                ntfy(
-                    f"{site} {cfg['name']} {direction} {abs(change):g} CFS",
-                    f"{site} {cfg['name']}\n\n"
-                    f"Previous: {fmt_flow(previous_flow)} CFS\n"
-                    f"Current: {fmt_flow(current_flow)} CFS\n"
-                    f"Change: {sign}{change:g} CFS\n\n"
-                    f"Upstream: {r['upstream']:g} ft\n"
-                    f"Downstream: {r['downstream']:g} ft\n\n"
-                    f"Source: MacVicar Consulting"
-                )
-
-        # Always save the newest observed flow as the next baseline.
-        new_state[site] = {
-            "flow": current_flow
-        }
+            # Current flow becomes the new baseline ONLY after an alert.
+            new_state[site] = {
+                "baseline": current_flow
+            }
 
     save_state(new_state)
 
