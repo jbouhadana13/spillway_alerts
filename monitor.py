@@ -15,7 +15,7 @@ STATE_FILE = Path("state.json")
 HISTORY_FILE = Path("spillway_history.json")
 LOCAL_TZ = ZoneInfo("America/New_York")
 
-# Alert when flow moves this much from the last alert/baseline.
+# Existing flow-change alert behavior.
 CHANGE_THRESHOLD = 20
 
 # Predictive warning settings.
@@ -95,8 +95,8 @@ def save_json(path, value):
 def ntfy(title, message, priority="high"):
     url = f"https://ntfy.sh/{NTFY_TOPIC}"
 
-    # Prefix the exact requested emojis in the title. RFC 2047 encoding keeps
-    # the HTTP header ASCII-safe while preserving the Unicode title in ntfy.
+    # Put the exact requested emojis at the front of every notification title.
+    # RFC 2047 keeps the HTTP header ASCII-safe while preserving the emojis.
     encoded_title = Header(f"🫪🚨 {title}", "utf-8").encode()
 
     req = urllib.request.Request(
@@ -130,15 +130,13 @@ def event_levels(history, site, event_type):
     return levels
 
 
-def record_transition(history, site, name, event_type, previous, current):
+def record_transition(history, site, name, event_type, current):
     event = {
         "site": site,
         "name": name,
         "event": event_type,
         "timestamp": datetime.now(LOCAL_TZ).isoformat(timespec="seconds"),
-        "previous_flow": previous["flow"],
-        "current_flow": current["flow"],
-        "previous_upstream": previous["upstream"],
+        "flow": current["flow"],
         "upstream": current["upstream"],
         "downstream": current["downstream"],
     }
@@ -150,13 +148,13 @@ def transition_message(site, name, event_type, event, history):
     levels = event_levels(history, site, event_type)
     avg_level = mean(levels)
     label = "opening" if event_type == "opened" else "closing"
+    state_change = "CLOSED → OPEN" if event_type == "opened" else "OPEN → CLOSED"
 
     return (
         f"{site} {name}\n\n"
-        f"Previous flow: {fmt_flow(event['previous_flow'])} CFS\n"
-        f"Current flow: {fmt_flow(event['current_flow'])} CFS\n"
+        f"State: {state_change}\n"
+        f"Current flow: {fmt_flow(event['flow'])} CFS\n"
         f"Upstream at {label}: {event['upstream']:.2f} ft\n"
-        f"Previous upstream: {event['previous_upstream']:.2f} ft\n"
         f"Downstream: {event['downstream']:.2f} ft\n\n"
         f"Historical {label}s: {len(levels)}\n"
         f"Average {label} level: {avg_level:.2f} ft\n\n"
@@ -204,11 +202,18 @@ def main():
 
         site_state = dict(old_state.get(site, {}))
         baseline = site_state.get("baseline")
-        previous_flow = site_state.get("last_flow")
-        previous_upstream = site_state.get("last_upstream")
-        previous_downstream = site_state.get("last_downstream")
 
-        # Preserve the existing flow-change baseline behavior.
+        # If the earlier implementation already seeded last_flow, use it once
+        # to migrate cleanly to the lighter open/closed state model.
+        previous_open = site_state.get("is_open")
+        if previous_open is None and site_state.get("last_flow") is not None:
+            previous_open = float(site_state["last_flow"]) > 0
+
+        # Remove old per-reading fields so state.json does not change every run.
+        site_state.pop("last_flow", None)
+        site_state.pop("last_upstream", None)
+        site_state.pop("last_downstream", None)
+
         if baseline is None:
             baseline = current_flow
             site_state["baseline"] = current_flow
@@ -221,23 +226,16 @@ def main():
             f"flow={current_flow} baseline={baseline} change={change:+g}"
         )
 
-        # Migration / first observation: establish the previous-reading fields
-        # without recording a false opening or closing event.
-        if previous_flow is None or previous_upstream is None:
-            site_state["last_flow"] = current_flow
-            site_state["last_upstream"] = r["upstream"]
-            site_state["last_downstream"] = r["downstream"]
+        # First observation after the upgrade: establish status without
+        # manufacturing a false opening or closing event.
+        if previous_open is None:
+            site_state["is_open"] = current_open
             site_state.setdefault("open_warning_sent", False)
             site_state.setdefault("close_warning_sent", False)
             new_state[site] = site_state
             continue
 
-        previous = {
-            "flow": float(previous_flow),
-            "upstream": float(previous_upstream),
-            "downstream": float(previous_downstream) if previous_downstream is not None else r["downstream"],
-        }
-        previous_open = previous["flow"] > 0
+        previous_open = bool(previous_open)
         transition = None
 
         if not previous_open and current_open:
@@ -251,7 +249,6 @@ def main():
                 site,
                 cfg["name"],
                 transition,
-                previous,
                 r,
             )
 
@@ -266,8 +263,8 @@ def main():
                     transition_message(site, cfg["name"], "closed", event, history),
                 )
 
-            # A transition is already a meaningful alert, so reset the flow
-            # baseline here to avoid a duplicate 20-CFS notification.
+            # The transition is already the meaningful alert; reset the CFS
+            # baseline so it does not also produce a duplicate 20-CFS alert.
             site_state["baseline"] = current_flow
             site_state["open_warning_sent"] = False
             site_state["close_warning_sent"] = False
@@ -290,14 +287,18 @@ def main():
                 )
                 site_state["baseline"] = current_flow
 
-            # Predict an opening only after at least 3 recorded openings.
+            # Closed spillway: warn within 0.10 ft below the historical opening
+            # level after at least 3 recorded openings.
             open_levels = event_levels(history, site, "opened")
             if not current_open and len(open_levels) >= MIN_HISTORY_EVENTS:
                 open_threshold = mean(open_levels)
-                in_open_zone = abs(r["upstream"] - open_threshold) <= PREDICTION_DISTANCE_FT
-                approaching_open = r["upstream"] >= previous["upstream"]
+                in_open_zone = (
+                    open_threshold - PREDICTION_DISTANCE_FT
+                    <= r["upstream"]
+                    <= open_threshold
+                )
 
-                if in_open_zone and approaching_open:
+                if in_open_zone:
                     if not site_state.get("open_warning_sent", False):
                         ntfy(
                             f"{site} {cfg['name']} MAY OPEN SOON",
@@ -311,19 +312,23 @@ def main():
                             ),
                         )
                         site_state["open_warning_sent"] = True
-                elif not in_open_zone:
+                else:
                     site_state["open_warning_sent"] = False
             else:
                 site_state["open_warning_sent"] = False
 
-            # Predict a closing only after at least 3 recorded closings.
+            # Open spillway: warn within 0.10 ft above the historical closing
+            # level after at least 3 recorded closings.
             close_levels = event_levels(history, site, "closed")
             if current_open and len(close_levels) >= MIN_HISTORY_EVENTS:
                 close_threshold = mean(close_levels)
-                in_close_zone = abs(r["upstream"] - close_threshold) <= PREDICTION_DISTANCE_FT
-                approaching_close = r["upstream"] <= previous["upstream"]
+                in_close_zone = (
+                    close_threshold
+                    <= r["upstream"]
+                    <= close_threshold + PREDICTION_DISTANCE_FT
+                )
 
-                if in_close_zone and approaching_close:
+                if in_close_zone:
                     if not site_state.get("close_warning_sent", False):
                         ntfy(
                             f"{site} {cfg['name']} MAY CLOSE SOON",
@@ -337,15 +342,12 @@ def main():
                             ),
                         )
                         site_state["close_warning_sent"] = True
-                elif not in_close_zone:
+                else:
                     site_state["close_warning_sent"] = False
             else:
                 site_state["close_warning_sent"] = False
 
-        # Persist the latest observation for the next 10-minute comparison.
-        site_state["last_flow"] = current_flow
-        site_state["last_upstream"] = r["upstream"]
-        site_state["last_downstream"] = r["downstream"]
+        site_state["is_open"] = current_open
         new_state[site] = site_state
 
     save_json(STATE_FILE, new_state)
