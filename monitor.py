@@ -9,17 +9,19 @@ SOURCE_URL = "https://www.macvicarconsulting.com/readings/readingsmobil.htm"
 NTFY_TOPIC = os.environ["NTFY_TOPIC"]
 STATE_FILE = Path("state.json")
 
-# Alert fires when flow crosses this threshold.
+# Notify whenever flow changes by this amount or more.
+CHANGE_THRESHOLD = 20
+
 SPILLWAYS = {
-    "S99":  {"name": "Fort Pierce",          "threshold": 1},
-    "S49":  {"name": "Port St. Lucie",          "threshold": 1},
-    "S97":  {"name": "Palm City",          "threshold": 1},
-    "S46":  {"name": "Jupiter",          "threshold": 1},
-    "S44":  {"name": "N. Palm Beach",   "threshold": 1},
-    "S155": {"name": "Lake Worth",     "threshold": 1},
-    "S41":  {"name": "Boynton Beach",   "threshold": 1},
-    "S40":  {"name": "Delray Beach",    "threshold": 1},
-    "S37A": {"name": "Pompano Beach",   "threshold": 1},
+    "S99":  {"name": "Fort Pierce"},
+    "S49":  {"name": "Port St. Lucie"},
+    "S97":  {"name": "Palm City"},
+    "S46":  {"name": "Jupiter"},
+    "S44":  {"name": "N. Palm Beach"},
+    "S155": {"name": "Lake Worth"},
+    "S41":  {"name": "Boynton Beach"},
+    "S40":  {"name": "Delray Beach"},
+    "S37A": {"name": "Pompano Beach"},
 }
 
 
@@ -42,6 +44,7 @@ def strip_tags(value):
 
 def parse_readings(page):
     readings = {}
+
     rows = re.findall(r"<tr\b[^>]*>(.*?)</tr>", page, flags=re.I | re.S)
 
     for row in rows:
@@ -51,7 +54,12 @@ def parse_readings(page):
             if not re.search(rf"\b{re.escape(site)}\b", text, flags=re.I):
                 continue
 
-            m = re.search(rf"\b{re.escape(site)}\b(.*)", text, flags=re.I)
+            m = re.search(
+                rf"\b{re.escape(site)}\b(.*)",
+                text,
+                flags=re.I
+            )
+
             if not m:
                 continue
 
@@ -91,7 +99,10 @@ def ntfy(title, message, priority="high"):
         data=message.encode("utf-8"),
         method="POST",
         headers={
-            "Title": title.encode("ascii", errors="ignore").decode(),
+            "Title": title.encode(
+                "ascii",
+                errors="ignore"
+            ).decode(),
             "Priority": priority,
             "Tags": "ocean,warning",
             "Content-Type": "text/plain; charset=utf-8",
@@ -116,67 +127,55 @@ def main():
         print("WARNING: Could not parse:", ", ".join(missing))
 
     old_state = load_state()
-    new_state = {}
+    new_state = dict(old_state)
 
     for site, cfg in SPILLWAYS.items():
+
         if site not in readings:
-            # Preserve existing state if this structure could not be parsed.
-            if site in old_state:
-                new_state[site] = old_state[site]
             continue
 
         r = readings[site]
-        threshold = float(cfg["threshold"])
-        above = r["flow"] >= threshold
+        current_flow = r["flow"]
 
-        previous = old_state.get(site, {}).get("above")
-
-        # Only persist threshold state.
-        new_state[site] = {
-            "above": above
-        }
+        previous_flow = old_state.get(site, {}).get("flow")
 
         print(
             f"{site} {cfg['name']}: "
-            f"flow={r['flow']} "
+            f"flow={current_flow} "
             f"up={r['upstream']} "
             f"down={r['downstream']} "
-            f"threshold={threshold} "
-            f"above={above}"
+            f"previous={previous_flow}"
         )
 
-        # No alert if we don't have a previous state yet.
-        if previous is None:
-            continue
+        # First observation establishes the baseline.
+        if previous_flow is not None:
 
-        if above and not previous:
-            ntfy(
-                f"{site} {cfg['name']} IS FLOWING",
-                f"{site} crossed {fmt_flow(threshold)} CFS.\n\n"
-                f"Flow: {fmt_flow(r['flow'])} CFS\n"
-                f"Upstream: {r['upstream']:g} ft\n"
-                f"Downstream: {r['downstream']:g} ft\n\n"
-                f"Source: MacVicar Consulting"
-            )
+            previous_flow = float(previous_flow)
+            change = current_flow - previous_flow
 
-        elif not above and previous:
-            ntfy(
-                f"{site} {cfg['name']} DROPPED BELOW THRESHOLD",
-                f"{site} dropped below {fmt_flow(threshold)} CFS.\n\n"
-                f"Flow: {fmt_flow(r['flow'])} CFS\n"
-                f"Upstream: {r['upstream']:g} ft\n"
-                f"Downstream: {r['downstream']:g} ft\n\n"
-                f"Source: MacVicar Consulting",
-                priority="default"
-            )
+            if abs(change) >= CHANGE_THRESHOLD:
+
+                direction = "INCREASED" if change > 0 else "DECREASED"
+                sign = "+" if change > 0 else ""
+
+                ntfy(
+                    f"{site} {cfg['name']} {direction} {abs(change):g} CFS",
+                    f"{site} {cfg['name']}\n\n"
+                    f"Previous: {fmt_flow(previous_flow)} CFS\n"
+                    f"Current: {fmt_flow(current_flow)} CFS\n"
+                    f"Change: {sign}{change:g} CFS\n\n"
+                    f"Upstream: {r['upstream']:g} ft\n"
+                    f"Downstream: {r['downstream']:g} ft\n\n"
+                    f"Source: MacVicar Consulting"
+                )
+
+        # Always save the newest observed flow as the next baseline.
+        new_state[site] = {
+            "flow": current_flow
+        }
 
     save_state(new_state)
 
 
 if __name__ == "__main__":
-    ntfy(
-        "SPILLWAY ALERT TEST",
-        "Success! GitHub Actions is connected to ntfy and alerts are working.",
-        priority="high"
-    )
     main()
