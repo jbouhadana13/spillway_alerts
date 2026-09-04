@@ -1,0 +1,44 @@
+name: Spillway Alerts
+
+on:
+  schedule:
+    # Every 5 minutes, offset from the top of the hour
+    - cron: "3,8,13,18,23,28,33,38,43,48,53,58 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: spillway-monitor
+  cancel-in-progress: false
+
+jobs:
+  check-spillways:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check spillways
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: python monitor.py
+
+      - name: Save spillway state
+        run: |
+          if [[ -n "$(git status --porcelain state.json)" ]]; then
+            git config user.name "spillway-alert-bot"
+            git config user.email "spillway-alert-bot@users.noreply.github.com"
+            git add state.json
+            git commit -m "Update spillway state"
+            git push
+          else
+            echo "No state change."
+          fi
