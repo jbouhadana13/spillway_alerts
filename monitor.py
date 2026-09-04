@@ -13,7 +13,7 @@ STATE_FILE = Path("state.json")
 SPILLWAYS = {
     "S99":  {"name": "Fort Pierce",          "threshold": 1},
     "S49":  {"name": "Port St. Lucie",          "threshold": 1},
-    "S48":  {"name": "Palm City",          "threshold": 1},
+    "S97":  {"name": "Palm City",          "threshold": 1},
     "S46":  {"name": "Jupiter",          "threshold": 1},
     "S44":  {"name": "N. Palm Beach",   "threshold": 1},
     "S155": {"name": "Lake Worth",     "threshold": 1},
