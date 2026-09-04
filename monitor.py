@@ -104,7 +104,7 @@ def ntfy(title, message, priority="high"):
                 errors="ignore"
             ).decode(),
             "Priority": priority,
-            "Tags": "ocean,warning",
+            "Tags": "🫪,🚨",
             "Content-Type": "text/plain; charset=utf-8",
         },
     )
