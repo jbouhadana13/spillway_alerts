@@ -1,29 +1,56 @@
 {
   "S155": {
-    "baseline": 161.0
+    "baseline": 161.0,
+    "close_warning_sent": false,
+    "is_open": true,
+    "open_warning_sent": false
   },
   "S37A": {
-    "baseline": 1133.0
+    "baseline": 1133.0,
+    "close_warning_sent": false,
+    "is_open": false,
+    "open_warning_sent": false
   },
   "S40": {
-    "baseline": 171.0
+    "baseline": 171.0,
+    "close_warning_sent": false,
+    "is_open": true,
+    "open_warning_sent": false
   },
   "S41": {
-    "baseline": 349.0
+    "baseline": 349.0,
+    "close_warning_sent": false,
+    "is_open": true,
+    "open_warning_sent": false
   },
   "S44": {
-    "baseline": 123.0
+    "baseline": 123.0,
+    "close_warning_sent": false,
+    "is_open": true,
+    "open_warning_sent": false
   },
   "S46": {
-    "baseline": 7.0
+    "baseline": 7.0,
+    "close_warning_sent": false,
+    "is_open": true,
+    "open_warning_sent": false
   },
   "S49": {
-    "baseline": 116.0
+    "baseline": 116.0,
+    "close_warning_sent": false,
+    "is_open": true,
+    "open_warning_sent": false
   },
   "S97": {
-    "baseline": 0.0
+    "baseline": 0.0,
+    "close_warning_sent": false,
+    "is_open": false,
+    "open_warning_sent": false
   },
   "S99": {
-    "baseline": 153.0
+    "baseline": 153.0,
+    "close_warning_sent": false,
+    "is_open": true,
+    "open_warning_sent": false
   }
 }
