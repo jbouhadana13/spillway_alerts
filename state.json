@@ -20,6 +20,9 @@
   "S49": {
     "above": true
   },
+  "S97": {
+    "above": false
+  },
   "S99": {
     "above": true
   }
