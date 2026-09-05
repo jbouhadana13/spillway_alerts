@@ -8,6 +8,33 @@
       "site": "S37A",
       "timestamp": "2026-09-04T23:43:08-04:00",
       "upstream": 4.2
+    },
+    {
+      "downstream": 12.4,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Fort Pierce",
+      "site": "S99",
+      "timestamp": "2026-09-05T04:37:44-04:00",
+      "upstream": 19.4
+    },
+    {
+      "downstream": 2.0,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "N. Palm Beach",
+      "site": "S44",
+      "timestamp": "2026-09-05T04:37:45-04:00",
+      "upstream": 7.0
+    },
+    {
+      "downstream": 2.0,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Pompano Beach",
+      "site": "S37A",
+      "timestamp": "2026-09-05T04:37:45-04:00",
+      "upstream": 3.8
     }
   ]
 }
