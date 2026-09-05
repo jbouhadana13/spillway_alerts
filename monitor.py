@@ -95,9 +95,16 @@ def save_json(path, value):
 def ntfy(title, message, priority="high"):
     url = f"https://ntfy.sh/{NTFY_TOPIC}"
 
-    # Put the exact requested emojis at the front of every notification title.
-    # RFC 2047 keeps the HTTP header ASCII-safe while preserving the emojis.
-    encoded_title = Header(f"🫪🚨 {title}", "utf-8").encode()
+    # Use custom emojis for open/close events; keep the default pair elsewhere.
+    if title.endswith(" OPENED"):
+        prefix = "🥳"
+    elif title.endswith(" CLOSED"):
+        prefix = "🥀🙂‍↕️"
+    else:
+        prefix = "🫪🚨"
+
+    # RFC 2047 keeps the HTTP header ASCII-safe while preserving Unicode.
+    encoded_title = Header(f"{prefix} {title}", "utf-8").encode()
 
     req = urllib.request.Request(
         url,
