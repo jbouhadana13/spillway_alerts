@@ -31,6 +31,7 @@ SPILLWAYS = {
     "S155": {"name": "Lake Worth"},
     "S41":  {"name": "Boynton Beach"},
     "S40":  {"name": "Delray Beach"},
+    "G56":  {"name": "Boca Raton"},
     "S37A": {"name": "Pompano Beach"},
 }
 
