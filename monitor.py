@@ -23,6 +23,7 @@ PREDICTION_DISTANCE_FT = 0.10
 MIN_HISTORY_EVENTS = 3
 
 SPILLWAYS = {
+    "S80":  {"name": "Stuart Locks"},
     "S99":  {"name": "Fort Pierce"},
     "S49":  {"name": "Port St. Lucie"},
     "S97":  {"name": "Palm City"},
