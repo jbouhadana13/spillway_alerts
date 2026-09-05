@@ -105,6 +105,13 @@ def ntfy(title, message, priority="high"):
     else:
         prefix = "🫪🚨"
 
+    # S46 Jupiter increases/openings are especially important: make them
+    # ntfy max-priority alerts and clearly mark them as SUPER ALERTS.
+    if title.startswith("S46 Jupiter OPENED") or title.startswith("S46 Jupiter INCREASED"):
+        title = f"SUPER ALERT — {title}"
+        prefix = "🚨🚨🚨"
+        priority = "max"
+
     # RFC 2047 keeps the HTTP header ASCII-safe while preserving Unicode.
     encoded_title = Header(f"{prefix} {title}", "utf-8").encode()
 
