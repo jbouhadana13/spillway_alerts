@@ -143,6 +143,24 @@
       "site": "S44",
       "timestamp": "2026-09-06T09:00:37-04:00",
       "upstream": 6.8
+    },
+    {
+      "downstream": 4.5,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Jupiter",
+      "site": "S46",
+      "timestamp": "2026-09-06T13:50:38-04:00",
+      "upstream": 14.5
+    },
+    {
+      "downstream": -0.2,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-09-06T13:50:38-04:00",
+      "upstream": 8.0
     }
   ]
 }
