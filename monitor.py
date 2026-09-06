@@ -166,6 +166,10 @@ def transition_message(site, name, event_type, event, history):
     label = "opening" if event_type == "opened" else "closing"
     state_change = "CLOSED → OPEN" if event_type == "opened" else "OPEN → CLOSED"
 
+    extra = ""
+    if site == "S49" and event_type == "closed":
+        extra = "\n\nAmir, commence the SHADATHON."
+
     return (
         f"{site} {name}\n\n"
         f"State: {state_change}\n"
@@ -173,7 +177,8 @@ def transition_message(site, name, event_type, event, history):
         f"Upstream at {label}: {event['upstream']:.2f} ft\n"
         f"Downstream: {event['downstream']:.2f} ft\n\n"
         f"Historical {label}s: {len(levels)}\n"
-        f"Average {label} level: {avg_level:.2f} ft\n\n"
+        f"Average {label} level: {avg_level:.2f} ft"
+        f"{extra}\n\n"
         f"Source: MacVicar Consulting"
     )
 
