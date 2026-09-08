@@ -1,14 +1,14 @@
 {
   "G56": {
-    "baseline": 718.0,
+    "baseline": 694.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
   },
   "S155": {
-    "baseline": 0.0,
+    "baseline": 712.0,
     "close_warning_sent": false,
-    "is_open": false,
+    "is_open": true,
     "open_warning_sent": false
   },
   "S37A": {
