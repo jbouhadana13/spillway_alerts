@@ -291,81 +291,87 @@ def main():
             site_state["close_warning_sent"] = False
 
         else:
-            # Keep the existing 20+ CFS change alerts.
-            if abs(change) >= CHANGE_THRESHOLD:
-                direction = "INCREASED" if change > 0 else "DECREASED"
-                sign = "+" if change > 0 else ""
+            # S37A only sends notifications for actual opening/closing events.
+            # We still keep tracking its state and history normally.
+            if site != "S37A":
+                # Keep the existing 20+ CFS change alerts.
+                if abs(change) >= CHANGE_THRESHOLD:
+                    direction = "INCREASED" if change > 0 else "DECREASED"
+                    sign = "+" if change > 0 else ""
 
-                ntfy(
-                    f"{site} {cfg['name']} {direction} {abs(change):g} CFS",
-                    f"{site} {cfg['name']}\n\n"
-                    f"Previous baseline: {fmt_flow(baseline)} CFS\n"
-                    f"Current flow: {fmt_flow(current_flow)} CFS\n"
-                    f"Change: {sign}{change:g} CFS\n\n"
-                    f"Upstream: {r['upstream']:g} ft\n"
-                    f"Downstream: {r['downstream']:g} ft\n\n"
-                    f"Source: MacVicar Consulting"
-                )
-                site_state["baseline"] = current_flow
+                    ntfy(
+                        f"{site} {cfg['name']} {direction} {abs(change):g} CFS",
+                        f"{site} {cfg['name']}\n\n"
+                        f"Previous baseline: {fmt_flow(baseline)} CFS\n"
+                        f"Current flow: {fmt_flow(current_flow)} CFS\n"
+                        f"Change: {sign}{change:g} CFS\n\n"
+                        f"Upstream: {r['upstream']:g} ft\n"
+                        f"Downstream: {r['downstream']:g} ft\n\n"
+                        f"Source: MacVicar Consulting"
+                    )
+                    site_state["baseline"] = current_flow
 
-            # Closed spillway: warn within 0.10 ft below the historical opening
-            # level after at least 3 recorded openings.
-            open_levels = event_levels(history, site, "opened")
-            if not current_open and len(open_levels) >= MIN_HISTORY_EVENTS:
-                open_threshold = mean(open_levels)
-                in_open_zone = (
-                    open_threshold - PREDICTION_DISTANCE_FT
-                    <= r["upstream"]
-                    <= open_threshold
-                )
+                # Closed spillway: warn within 0.10 ft below the historical opening
+                # level after at least 3 recorded openings.
+                open_levels = event_levels(history, site, "opened")
+                if not current_open and len(open_levels) >= MIN_HISTORY_EVENTS:
+                    open_threshold = mean(open_levels)
+                    in_open_zone = (
+                        open_threshold - PREDICTION_DISTANCE_FT
+                        <= r["upstream"]
+                        <= open_threshold
+                    )
 
-                if in_open_zone:
-                    if not site_state.get("open_warning_sent", False):
-                        ntfy(
-                            f"{site} {cfg['name']} MAY OPEN SOON",
-                            prediction_message(
-                                site,
-                                cfg["name"],
-                                "OPEN",
-                                r,
-                                open_threshold,
-                                len(open_levels),
-                            ),
-                        )
-                        site_state["open_warning_sent"] = True
+                    if in_open_zone:
+                        if not site_state.get("open_warning_sent", False):
+                            ntfy(
+                                f"{site} {cfg['name']} MAY OPEN SOON",
+                                prediction_message(
+                                    site,
+                                    cfg["name"],
+                                    "OPEN",
+                                    r,
+                                    open_threshold,
+                                    len(open_levels),
+                                ),
+                            )
+                            site_state["open_warning_sent"] = True
+                    else:
+                        site_state["open_warning_sent"] = False
                 else:
                     site_state["open_warning_sent"] = False
-            else:
-                site_state["open_warning_sent"] = False
 
-            # Open spillway: warn within 0.10 ft above the historical closing
-            # level after at least 3 recorded closings.
-            close_levels = event_levels(history, site, "closed")
-            if current_open and len(close_levels) >= MIN_HISTORY_EVENTS:
-                close_threshold = mean(close_levels)
-                in_close_zone = (
-                    close_threshold
-                    <= r["upstream"]
-                    <= close_threshold + PREDICTION_DISTANCE_FT
-                )
+                # Open spillway: warn within 0.10 ft above the historical closing
+                # level after at least 3 recorded closings.
+                close_levels = event_levels(history, site, "closed")
+                if current_open and len(close_levels) >= MIN_HISTORY_EVENTS:
+                    close_threshold = mean(close_levels)
+                    in_close_zone = (
+                        close_threshold
+                        <= r["upstream"]
+                        <= close_threshold + PREDICTION_DISTANCE_FT
+                    )
 
-                if in_close_zone:
-                    if not site_state.get("close_warning_sent", False):
-                        ntfy(
-                            f"{site} {cfg['name']} MAY CLOSE SOON",
-                            prediction_message(
-                                site,
-                                cfg["name"],
-                                "CLOSE",
-                                r,
-                                close_threshold,
-                                len(close_levels),
-                            ),
-                        )
-                        site_state["close_warning_sent"] = True
+                    if in_close_zone:
+                        if not site_state.get("close_warning_sent", False):
+                            ntfy(
+                                f"{site} {cfg['name']} MAY CLOSE SOON",
+                                prediction_message(
+                                    site,
+                                    cfg["name"],
+                                    "CLOSE",
+                                    r,
+                                    close_threshold,
+                                    len(close_levels),
+                                ),
+                            )
+                            site_state["close_warning_sent"] = True
+                    else:
+                        site_state["close_warning_sent"] = False
                 else:
                     site_state["close_warning_sent"] = False
             else:
+                site_state["open_warning_sent"] = False
                 site_state["close_warning_sent"] = False
 
         site_state["is_open"] = current_open
