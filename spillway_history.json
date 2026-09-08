@@ -197,6 +197,15 @@
       "site": "S37A",
       "timestamp": "2026-09-07T16:50:37-04:00",
       "upstream": 4.0
+    },
+    {
+      "downstream": 1.9,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Port St. Lucie",
+      "site": "S49",
+      "timestamp": "2026-09-07T20:50:40-04:00",
+      "upstream": 19.3
     }
   ]
 }

@@ -6,13 +6,13 @@
     "open_warning_sent": false
   },
   "S155": {
-    "baseline": 1180.0,
+    "baseline": 1152.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
   },
   "S37A": {
-    "baseline": 1245.0,
+    "baseline": 1269.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
@@ -42,9 +42,9 @@
     "open_warning_sent": false
   },
   "S49": {
-    "baseline": 111.0,
+    "baseline": 0.0,
     "close_warning_sent": false,
-    "is_open": true,
+    "is_open": false,
     "open_warning_sent": false
   },
   "S80": {
