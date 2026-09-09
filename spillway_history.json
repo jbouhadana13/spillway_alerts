@@ -314,6 +314,15 @@
       "site": "S37A",
       "timestamp": "2026-09-09T07:50:39-04:00",
       "upstream": 2.8
+    },
+    {
+      "downstream": 2.3,
+      "event": "opened",
+      "flow": 125.0,
+      "name": "N. Palm Beach",
+      "site": "S44",
+      "timestamp": "2026-09-09T10:20:41-04:00",
+      "upstream": 7.3
     }
   ]
 }
