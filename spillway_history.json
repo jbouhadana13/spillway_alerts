@@ -485,6 +485,15 @@
       "site": "S155",
       "timestamp": "2026-09-11T12:50:46-04:00",
       "upstream": 8.7
+    },
+    {
+      "downstream": 0.9,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Lake Worth",
+      "site": "S155",
+      "timestamp": "2026-09-11T18:50:25-04:00",
+      "upstream": 8.3
     }
   ]
 }
