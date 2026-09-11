@@ -37,7 +37,7 @@
   },
   "S46": {
     "baseline": 1.0,
-    "close_warning_sent": true,
+    "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
   },
