@@ -97,11 +97,13 @@ def save_json(path, value):
 def ntfy(title, message, priority="high"):
     url = f"https://ntfy.sh/{NTFY_TOPIC}"
 
-    # Use custom emojis for open/close events; keep the default pair elsewhere.
+    # Use custom emojis for transitions and predictive warnings.
     if title.endswith(" OPENED"):
         prefix = "🥳"
     elif title.endswith(" CLOSED"):
         prefix = "🥀🙂‍↕️"
+    elif title.endswith(" MAY OPEN SOON") or title.endswith(" MAY CLOSE SOON"):
+        prefix = "🔜 😬"
     else:
         prefix = "🫪🚨"
 
