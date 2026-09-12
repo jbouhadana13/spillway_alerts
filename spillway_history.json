@@ -530,6 +530,15 @@
       "site": "S155",
       "timestamp": "2026-09-12T04:20:49-04:00",
       "upstream": 8.7
+    },
+    {
+      "downstream": 12.5,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Fort Pierce",
+      "site": "S99",
+      "timestamp": "2026-09-12T05:20:48-04:00",
+      "upstream": 19.4
     }
   ]
 }
