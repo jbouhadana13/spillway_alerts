@@ -28,25 +28,12 @@ jobs:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
         run: python monitor.py
 
-      - name: Send service restored notice
-        if: ${{ hashFiles('.service_restored_notice_sent') == '' }}
-        env:
-          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
-        run: |
-          curl -fsS \
-            -H "Title: Spillway Alerts Restored" \
-            -H "Priority: high" \
-            -H "Tags: white_check_mark" \
-            -d "All technical difficulties have been resolved. We apologize for the inconvenience. Spillway Alerts are fully operational again." \
-            "https://ntfy.sh/${NTFY_TOPIC}"
-          touch .service_restored_notice_sent
-
       - name: Save spillway state and history
         run: |
-          if [[ -n "$(git status --porcelain state.json spillway_history.json .service_restored_notice_sent)" ]]; then
+          if [[ -n "$(git status --porcelain state.json spillway_history.json)" ]]; then
             git config user.name "spillway-alert-bot"
             git config user.email "spillway-alert-bot@users.noreply.github.com"
-            git add state.json spillway_history.json .service_restored_notice_sent
+            git add state.json spillway_history.json
             git commit -m "Update spillway state and history"
             git push
           else
