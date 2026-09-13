@@ -647,6 +647,24 @@
       "site": "S97",
       "timestamp": "2026-09-13T18:50:45-04:00",
       "upstream": 22.4
+    },
+    {
+      "downstream": 4.5,
+      "event": "opened",
+      "flow": 3.0,
+      "name": "Jupiter",
+      "site": "S46",
+      "timestamp": "2026-09-13T19:20:46-04:00",
+      "upstream": 14.8
+    },
+    {
+      "downstream": 0.5,
+      "event": "opened",
+      "flow": 371.0,
+      "name": "Lake Worth",
+      "site": "S155",
+      "timestamp": "2026-09-13T19:20:46-04:00",
+      "upstream": 8.8
     }
   ]
 }
