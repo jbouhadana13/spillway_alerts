@@ -638,6 +638,15 @@
       "site": "S97",
       "timestamp": "2026-09-13T18:20:43-04:00",
       "upstream": 22.5
+    },
+    {
+      "downstream": 9.0,
+      "event": "opened",
+      "flow": 231.0,
+      "name": "Palm City",
+      "site": "S97",
+      "timestamp": "2026-09-13T18:50:45-04:00",
+      "upstream": 22.4
     }
   ]
 }
