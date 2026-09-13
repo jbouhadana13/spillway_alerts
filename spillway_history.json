@@ -566,6 +566,42 @@
       "site": "S37A",
       "timestamp": "2026-09-12T17:50:49-04:00",
       "upstream": 4.2
+    },
+    {
+      "downstream": 12.5,
+      "event": "opened",
+      "flow": 98.0,
+      "name": "Fort Pierce",
+      "site": "S99",
+      "timestamp": "2026-09-13T10:00:51-04:00",
+      "upstream": 19.5
+    },
+    {
+      "downstream": 2.1,
+      "event": "opened",
+      "flow": 122.0,
+      "name": "N. Palm Beach",
+      "site": "S44",
+      "timestamp": "2026-09-13T10:00:51-04:00",
+      "upstream": 7.1
+    },
+    {
+      "downstream": 1.8,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-09-13T10:00:52-04:00",
+      "upstream": 8.2
+    },
+    {
+      "downstream": 2.6,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Pompano Beach",
+      "site": "S37A",
+      "timestamp": "2026-09-13T10:00:52-04:00",
+      "upstream": 3.0
     }
   ]
 }
