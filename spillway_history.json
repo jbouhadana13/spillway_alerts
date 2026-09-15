@@ -809,6 +809,24 @@
       "site": "S44",
       "timestamp": "2026-09-15T06:20:41-04:00",
       "upstream": 7.3
+    },
+    {
+      "downstream": 8.4,
+      "event": "opened",
+      "flow": 488.0,
+      "name": "Palm City",
+      "site": "S97",
+      "timestamp": "2026-09-15T16:50:44-04:00",
+      "upstream": 22.4
+    },
+    {
+      "downstream": 1.7,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-09-15T16:50:44-04:00",
+      "upstream": 8.0
     }
   ]
 }
