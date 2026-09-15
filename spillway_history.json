@@ -773,6 +773,15 @@
       "site": "S44",
       "timestamp": "2026-09-14T22:50:47-04:00",
       "upstream": 6.9
+    },
+    {
+      "downstream": 4.5,
+      "event": "opened",
+      "flow": 1.0,
+      "name": "Jupiter",
+      "site": "S46",
+      "timestamp": "2026-09-15T01:50:44-04:00",
+      "upstream": 14.7
     }
   ]
 }
