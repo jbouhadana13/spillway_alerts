@@ -800,6 +800,15 @@
       "site": "S97",
       "timestamp": "2026-09-15T05:50:41-04:00",
       "upstream": 22.2
+    },
+    {
+      "downstream": 2.1,
+      "event": "opened",
+      "flow": 128.0,
+      "name": "N. Palm Beach",
+      "site": "S44",
+      "timestamp": "2026-09-15T06:20:41-04:00",
+      "upstream": 7.3
     }
   ]
 }
