@@ -30,14 +30,14 @@
     "open_warning_sent": false
   },
   "S44": {
-    "baseline": 1314.0,
+    "baseline": 1264.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
   },
   "S46": {
     "baseline": 423.0,
-    "close_warning_sent": false,
+    "close_warning_sent": true,
     "is_open": true,
     "open_warning_sent": false
   },
