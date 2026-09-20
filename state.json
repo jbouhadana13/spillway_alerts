@@ -18,8 +18,8 @@
     "open_warning_sent": false
   },
   "S40": {
-    "baseline": 1097.0,
-    "close_warning_sent": false,
+    "baseline": 1073.0,
+    "close_warning_sent": true,
     "is_open": true,
     "open_warning_sent": false
   },
