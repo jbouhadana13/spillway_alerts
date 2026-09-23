@@ -980,6 +980,24 @@
       "site": "S46",
       "timestamp": "2026-09-23T14:20:22-04:00",
       "upstream": 14.8
+    },
+    {
+      "downstream": 8.2,
+      "event": "opened",
+      "flow": 199.0,
+      "name": "Palm City",
+      "site": "S97",
+      "timestamp": "2026-09-23T16:50:22-04:00",
+      "upstream": 21.9
+    },
+    {
+      "downstream": 1.6,
+      "event": "opened",
+      "flow": 685.0,
+      "name": "Lake Worth",
+      "site": "S155",
+      "timestamp": "2026-09-23T16:50:22-04:00",
+      "upstream": 8.3
     }
   ]
 }
