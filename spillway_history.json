@@ -998,6 +998,15 @@
       "site": "S155",
       "timestamp": "2026-09-23T16:50:22-04:00",
       "upstream": 8.3
+    },
+    {
+      "downstream": 3.0,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Boca Raton",
+      "site": "G56",
+      "timestamp": "2026-09-24T09:20:22-04:00",
+      "upstream": 6.9
     }
   ]
 }
