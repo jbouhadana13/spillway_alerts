@@ -1025,6 +1025,24 @@
       "site": "G56",
       "timestamp": "2026-09-24T13:50:23-04:00",
       "upstream": 8.1
+    },
+    {
+      "downstream": 4.3,
+      "event": "opened",
+      "flow": 489.0,
+      "name": "N. Palm Beach",
+      "site": "S44",
+      "timestamp": "2026-09-24T14:50:21-04:00",
+      "upstream": 7.3
+    },
+    {
+      "downstream": 0.6,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Pompano Beach",
+      "site": "S37A",
+      "timestamp": "2026-09-24T14:50:21-04:00",
+      "upstream": 2.5
     }
   ]
 }
