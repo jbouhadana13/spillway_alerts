@@ -1016,6 +1016,15 @@
       "site": "S44",
       "timestamp": "2026-09-24T11:50:25-04:00",
       "upstream": 6.8
+    },
+    {
+      "downstream": 1.0,
+      "event": "opened",
+      "flow": 152.0,
+      "name": "Boca Raton",
+      "site": "G56",
+      "timestamp": "2026-09-24T13:50:23-04:00",
+      "upstream": 8.1
     }
   ]
 }
