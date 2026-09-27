@@ -1169,6 +1169,24 @@
       "site": "S37A",
       "timestamp": "2026-09-27T08:51:10-04:00",
       "upstream": 4.4
+    },
+    {
+      "downstream": 8.4,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Palm City",
+      "site": "S97",
+      "timestamp": "2026-09-27T09:51:15-04:00",
+      "upstream": 21.5
+    },
+    {
+      "downstream": 4.5,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Pompano Beach",
+      "site": "S37A",
+      "timestamp": "2026-09-27T09:51:16-04:00",
+      "upstream": 4.4
     }
   ]
 }
