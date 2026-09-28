@@ -1223,6 +1223,33 @@
       "site": "S37A",
       "timestamp": "2026-09-27T22:21:05-04:00",
       "upstream": 4.3
+    },
+    {
+      "downstream": 3.8,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Lake Worth",
+      "site": "S155",
+      "timestamp": "2026-09-27T23:21:13-04:00",
+      "upstream": 8.2
+    },
+    {
+      "downstream": 4.1,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-09-27T23:21:13-04:00",
+      "upstream": 8.0
+    },
+    {
+      "downstream": 4.0,
+      "event": "opened",
+      "flow": 727.0,
+      "name": "Pompano Beach",
+      "site": "S37A",
+      "timestamp": "2026-09-27T23:21:13-04:00",
+      "upstream": 4.4
     }
   ]
 }
