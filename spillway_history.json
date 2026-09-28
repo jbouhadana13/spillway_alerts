@@ -1268,6 +1268,15 @@
       "site": "S97",
       "timestamp": "2026-09-28T05:21:15-04:00",
       "upstream": 21.8
+    },
+    {
+      "downstream": 3.8,
+      "event": "opened",
+      "flow": 154.0,
+      "name": "Lake Worth",
+      "site": "S155",
+      "timestamp": "2026-09-28T09:51:11-04:00",
+      "upstream": 8.7
     }
   ]
 }
