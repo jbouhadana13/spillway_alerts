@@ -1331,6 +1331,15 @@
       "site": "S40",
       "timestamp": "2026-09-29T13:21:09-04:00",
       "upstream": 8.4
+    },
+    {
+      "downstream": 2.9,
+      "event": "opened",
+      "flow": 956.0,
+      "name": "Pompano Beach",
+      "site": "S37A",
+      "timestamp": "2026-09-29T14:21:20-04:00",
+      "upstream": 4.2
     }
   ]
 }
