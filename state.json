@@ -6,8 +6,8 @@
     "open_warning_sent": false
   },
   "S155": {
-    "baseline": 450.0,
-    "close_warning_sent": false,
+    "baseline": 473.0,
+    "close_warning_sent": true,
     "is_open": true,
     "open_warning_sent": false
   },
