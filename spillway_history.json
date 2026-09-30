@@ -1385,6 +1385,15 @@
       "site": "S37A",
       "timestamp": "2026-09-30T16:21:22-04:00",
       "upstream": 4.3
+    },
+    {
+      "downstream": 4.5,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Jupiter",
+      "site": "S46",
+      "timestamp": "2026-09-30T18:51:07-04:00",
+      "upstream": 14.5
     }
   ]
 }
