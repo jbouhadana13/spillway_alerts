@@ -1466,6 +1466,15 @@
       "site": "S80",
       "timestamp": "2026-10-01T17:51:17-04:00",
       "upstream": 13.6
+    },
+    {
+      "downstream": 1.5,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Stuart Locks",
+      "site": "S80",
+      "timestamp": "2026-10-01T18:51:04-04:00",
+      "upstream": 13.6
     }
   ]
 }
