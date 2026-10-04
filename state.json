@@ -54,8 +54,8 @@
     "open_warning_sent": false
   },
   "S97": {
-    "baseline": 673.0,
-    "close_warning_sent": false,
+    "baseline": 898.0,
+    "close_warning_sent": true,
     "is_open": true,
     "open_warning_sent": false
   },
