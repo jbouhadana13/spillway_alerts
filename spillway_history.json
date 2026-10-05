@@ -1583,6 +1583,33 @@
       "site": "S37A",
       "timestamp": "2026-10-05T06:51:08-04:00",
       "upstream": 4.3
+    },
+    {
+      "downstream": 1.5,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Lake Worth",
+      "site": "S155",
+      "timestamp": "2026-10-05T08:21:04-04:00",
+      "upstream": 7.7
+    },
+    {
+      "downstream": 1.6,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Boynton Beach",
+      "site": "S41",
+      "timestamp": "2026-10-05T08:21:04-04:00",
+      "upstream": 7.8
+    },
+    {
+      "downstream": 1.8,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-10-05T08:21:04-04:00",
+      "upstream": 7.3
     }
   ]
 }
