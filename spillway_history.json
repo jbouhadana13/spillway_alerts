@@ -1610,6 +1610,24 @@
       "site": "S40",
       "timestamp": "2026-10-05T08:21:04-04:00",
       "upstream": 7.3
+    },
+    {
+      "downstream": 4.4,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Jupiter",
+      "site": "S46",
+      "timestamp": "2026-10-05T08:51:08-04:00",
+      "upstream": 13.1
+    },
+    {
+      "downstream": 1.6,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Boca Raton",
+      "site": "G56",
+      "timestamp": "2026-10-05T08:51:08-04:00",
+      "upstream": 7.2
     }
   ]
 }
