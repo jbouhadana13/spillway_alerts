@@ -1673,6 +1673,15 @@
       "site": "G56",
       "timestamp": "2026-10-05T14:21:03-04:00",
       "upstream": 8.7
+    },
+    {
+      "downstream": 1.0,
+      "event": "opened",
+      "flow": 181.0,
+      "name": "Lake Worth",
+      "site": "S155",
+      "timestamp": "2026-10-05T22:20:54-04:00",
+      "upstream": 8.7
     }
   ]
 }
