@@ -1736,6 +1736,24 @@
       "site": "S44",
       "timestamp": "2026-10-07T09:51:03-04:00",
       "upstream": 7.3
+    },
+    {
+      "downstream": 2.0,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-10-07T11:21:07-04:00",
+      "upstream": 8.0
+    },
+    {
+      "downstream": 1.6,
+      "event": "opened",
+      "flow": 1277.0,
+      "name": "Pompano Beach",
+      "site": "S37A",
+      "timestamp": "2026-10-07T11:21:07-04:00",
+      "upstream": 4.2
     }
   ]
 }
