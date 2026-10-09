@@ -1853,6 +1853,15 @@
       "site": "S155",
       "timestamp": "2026-10-09T07:51:22-04:00",
       "upstream": 8.4
+    },
+    {
+      "downstream": 3.1,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-10-09T11:21:07-04:00",
+      "upstream": 8.0
     }
   ]
 }
