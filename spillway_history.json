@@ -2006,6 +2006,24 @@
       "site": "G56",
       "timestamp": "2026-10-14T21:20:38-04:00",
       "upstream": 8.0
+    },
+    {
+      "downstream": 0.9,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Lake Worth",
+      "site": "S155",
+      "timestamp": "2026-10-15T09:20:41-04:00",
+      "upstream": 8.5
+    },
+    {
+      "downstream": 1.4,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Boca Raton",
+      "site": "G56",
+      "timestamp": "2026-10-15T09:20:41-04:00",
+      "upstream": 7.9
     }
   ]
 }
