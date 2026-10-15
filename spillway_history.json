@@ -1997,6 +1997,15 @@
       "site": "S97",
       "timestamp": "2026-10-14T17:50:36-04:00",
       "upstream": 21.4
+    },
+    {
+      "downstream": 1.8,
+      "event": "opened",
+      "flow": 141.0,
+      "name": "Boca Raton",
+      "site": "G56",
+      "timestamp": "2026-10-14T21:20:38-04:00",
+      "upstream": 8.0
     }
   ]
 }
