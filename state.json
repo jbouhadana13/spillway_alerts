@@ -9,7 +9,7 @@
     "baseline": 0.0,
     "close_warning_sent": false,
     "is_open": false,
-    "open_warning_sent": false
+    "open_warning_sent": true
   },
   "S37A": {
     "baseline": 0.0,
