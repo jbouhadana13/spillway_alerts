@@ -2159,6 +2159,24 @@
       "site": "S37A",
       "timestamp": "2026-10-18T11:50:51-04:00",
       "upstream": 2.3
+    },
+    {
+      "downstream": 5.1,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "N. Palm Beach",
+      "site": "S44",
+      "timestamp": "2026-10-18T15:50:51-04:00",
+      "upstream": 6.5
+    },
+    {
+      "downstream": 2.9,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Boynton Beach",
+      "site": "S41",
+      "timestamp": "2026-10-18T15:50:51-04:00",
+      "upstream": 7.5
     }
   ]
 }
