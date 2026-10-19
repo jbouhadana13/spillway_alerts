@@ -2213,6 +2213,15 @@
       "site": "S37A",
       "timestamp": "2026-10-19T00:50:53-04:00",
       "upstream": 4.3
+    },
+    {
+      "downstream": 2.9,
+      "event": "opened",
+      "flow": 168.0,
+      "name": "Boynton Beach",
+      "site": "S41",
+      "timestamp": "2026-10-19T06:50:52-04:00",
+      "upstream": 8.3
     }
   ]
 }
