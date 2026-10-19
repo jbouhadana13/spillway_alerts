@@ -2204,6 +2204,15 @@
       "site": "S46",
       "timestamp": "2026-10-18T22:50:50-04:00",
       "upstream": 14.8
+    },
+    {
+      "downstream": 2.4,
+      "event": "opened",
+      "flow": 566.0,
+      "name": "Pompano Beach",
+      "site": "S37A",
+      "timestamp": "2026-10-19T00:50:53-04:00",
+      "upstream": 4.3
     }
   ]
 }
