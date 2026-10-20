@@ -2303,6 +2303,15 @@
       "site": "S97",
       "timestamp": "2026-10-20T09:20:53-04:00",
       "upstream": 21.8
+    },
+    {
+      "downstream": 4.0,
+      "event": "opened",
+      "flow": 136.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-10-20T11:50:52-04:00",
+      "upstream": 8.3
     }
   ]
 }
