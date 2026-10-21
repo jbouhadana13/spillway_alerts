@@ -2384,6 +2384,15 @@
       "site": "S37A",
       "timestamp": "2026-10-21T10:20:58-04:00",
       "upstream": 3.0
+    },
+    {
+      "downstream": 1.9,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Boynton Beach",
+      "site": "S41",
+      "timestamp": "2026-10-21T10:50:56-04:00",
+      "upstream": 8.0
     }
   ]
 }
