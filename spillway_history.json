@@ -2411,6 +2411,15 @@
       "site": "S37A",
       "timestamp": "2026-10-21T22:50:53-04:00",
       "upstream": 3.0
+    },
+    {
+      "downstream": 1.6,
+      "event": "opened",
+      "flow": 182.0,
+      "name": "Lake Worth",
+      "site": "S155",
+      "timestamp": "2026-10-22T01:20:52-04:00",
+      "upstream": 8.7
     }
   ]
 }
