@@ -2420,6 +2420,15 @@
       "site": "S155",
       "timestamp": "2026-10-22T01:20:52-04:00",
       "upstream": 8.7
+    },
+    {
+      "downstream": 3.0,
+      "event": "opened",
+      "flow": 174.0,
+      "name": "Boynton Beach",
+      "site": "S41",
+      "timestamp": "2026-10-22T04:20:56-04:00",
+      "upstream": 8.5
     }
   ]
 }
