@@ -2429,6 +2429,24 @@
       "site": "S41",
       "timestamp": "2026-10-22T04:20:56-04:00",
       "upstream": 8.5
+    },
+    {
+      "downstream": 3.8,
+      "event": "opened",
+      "flow": 518.0,
+      "name": "Boca Raton",
+      "site": "G56",
+      "timestamp": "2026-10-22T07:20:54-04:00",
+      "upstream": 8.7
+    },
+    {
+      "downstream": 3.7,
+      "event": "opened",
+      "flow": 724.0,
+      "name": "Pompano Beach",
+      "site": "S37A",
+      "timestamp": "2026-10-22T07:20:54-04:00",
+      "upstream": 4.3
     }
   ]
 }
