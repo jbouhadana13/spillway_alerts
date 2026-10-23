@@ -2474,6 +2474,15 @@
       "site": "S155",
       "timestamp": "2026-10-22T21:50:52-04:00",
       "upstream": 8.4
+    },
+    {
+      "downstream": 4.5,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Jupiter",
+      "site": "S46",
+      "timestamp": "2026-10-22T23:20:53-04:00",
+      "upstream": 14.5
     }
   ]
 }
