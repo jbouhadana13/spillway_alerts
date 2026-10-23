@@ -2537,6 +2537,24 @@
       "site": "S37A",
       "timestamp": "2026-10-23T12:20:59-04:00",
       "upstream": 3.0
+    },
+    {
+      "downstream": 3.4,
+      "event": "opened",
+      "flow": 113.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-10-23T18:50:55-04:00",
+      "upstream": 8.5
+    },
+    {
+      "downstream": 3.8,
+      "event": "opened",
+      "flow": 107.0,
+      "name": "Boca Raton",
+      "site": "G56",
+      "timestamp": "2026-10-23T18:50:56-04:00",
+      "upstream": 8.3
     }
   ]
 }
