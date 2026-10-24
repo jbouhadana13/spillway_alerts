@@ -2564,6 +2564,15 @@
       "site": "S40",
       "timestamp": "2026-10-23T20:50:52-04:00",
       "upstream": 7.9
+    },
+    {
+      "downstream": 3.0,
+      "event": "opened",
+      "flow": 151.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-10-24T18:50:55-04:00",
+      "upstream": 8.3
     }
   ],
   "predictions": [
