@@ -1,0 +1,37 @@
+name: One-time SONK Subscriber Update
+on:
+  push:
+    paths:
+      - '.github/workflows/sonk-subscriber-update-once.yml'
+jobs:
+  announce:
+    if: github.event.head_commit.message == 'Send one-time SONK subscriber announcement'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send subscriber update
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          python - <<'PY'
+          import os
+          import json
+          import urllib.request
+          from email.header import Header
+          message = "We've made several improvements to make our spillway notifications more accurate, useful, and less repetitive!\n\n✅ **Smarter Flow Alerts:** Notifications now trigger after a cumulative 100 CFS change, reducing unnecessary alerts from minor fluctuations.\n\n🎯 **Improved Predictions:** Our opening and closing predictions now use historical data more effectively, with refined thresholds for better accuracy.\n\n🚨 **Enhanced Jupiter Alerts:** S46 Jupiter now sends an early notification when flow begins, followed by a SUPER ALERT once flow reaches 100 CFS.\n\n🔕 **Less Notification Noise:** We've adjusted Pompano Beach alerts to be less intrusive while keeping opening and closing notifications active.\n\n📊 **Ongoing Improvements:** We're now tracking prediction accuracy to continuously improve the system as more data becomes available.\n\nThanks for using SONK Spillway Alerts! 🎣"
+          title = "🚨 SONK Spillway Alerts — System Update"
+          url = "https://ntfy.sh/" + os.environ["NTFY_TOPIC"]
+          req = urllib.request.Request(
+              url,
+              data=message.encode('utf-8'),
+              method='POST',
+              headers={
+                  'Title': Header(title, 'utf-8').encode(),
+                  'Priority': 'default',
+                  'Markdown': 'yes',
+                  'Content-Type': 'text/plain; charset=utf-8',
+              },
+          )
+          with urllib.request.urlopen(req, timeout=25) as resp:
+              result = json.loads(resp.read().decode('utf-8'))
+              print('ntfy accepted announcement. Message ID:', result.get('id','unknown'))
+          PY
