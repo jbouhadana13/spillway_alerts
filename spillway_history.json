@@ -2555,6 +2555,15 @@
       "site": "G56",
       "timestamp": "2026-10-23T18:50:56-04:00",
       "upstream": 8.3
+    },
+    {
+      "downstream": 3.8,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-10-23T20:50:52-04:00",
+      "upstream": 7.9
     }
   ]
 }
