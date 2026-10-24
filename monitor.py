@@ -16,7 +16,7 @@ HISTORY_FILE = Path("spillway_history.json")
 LOCAL_TZ = ZoneInfo("America/New_York")
 
 # Existing flow-change alert behavior.
-CHANGE_THRESHOLD = 20
+CHANGE_THRESHOLD = 100
 
 # Predictive warning settings.
 PREDICTION_DISTANCE_FT = 0.10
