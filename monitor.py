@@ -3,10 +3,10 @@ import re
 import json
 import html
 import urllib.request
-from datetime import datetime
+from datetime import datetime, timedelta
 from email.header import Header
 from pathlib import Path
-from statistics import mean
+from statistics import mean, median
 from zoneinfo import ZoneInfo
 
 SOURCE_URL = "https://www.macvicarconsulting.com/readings/readingsmobil.htm"
@@ -20,7 +20,9 @@ CHANGE_THRESHOLD = 100
 
 # Predictive warning settings.
 PREDICTION_DISTANCE_FT = 0.10
-MIN_HISTORY_EVENTS = 3
+MIN_HISTORY_EVENTS = 5
+PREDICTION_VALIDITY_HOURS = 24
+S46_MAJOR_FLOW_CFS = 100
 
 SPILLWAYS = {
     "S80":  {"name": "Stuart Locks"},
@@ -98,7 +100,7 @@ def ntfy(title, message, priority="high"):
     url = f"https://ntfy.sh/{NTFY_TOPIC}"
 
     # Use custom emojis for transitions and predictive warnings.
-    if title.endswith(" OPENED"):
+    if title.endswith(" OPENED") or title.endswith(" STARTING TO OPEN"):
         prefix = "🥳"
     elif title.endswith(" CLOSED"):
         prefix = "🥀🙂‍↕️"
@@ -109,7 +111,9 @@ def ntfy(title, message, priority="high"):
 
     # S46 Jupiter increases/openings are especially important: make them
     # ntfy max-priority alerts and clearly mark them as SUPER ALERTS.
-    if title.startswith("S46 Jupiter OPENED") or title.startswith("S46 Jupiter INCREASED"):
+    if (title.startswith("S46 Jupiter OPENED") or
+            title.startswith("S46 Jupiter INCREASED") or
+            title.startswith("S46 Jupiter FLOW REACHED")):
         title = f"SUPER ALERT — {title}"
         prefix = "🚨🚨🚨"
         priority = "max"
@@ -162,6 +166,38 @@ def record_transition(history, site, name, event_type, current):
     return event
 
 
+def record_prediction(history, site, event_type, current, threshold, count):
+    # Keep a permanent record of sent predictions for future accuracy analysis.
+    history.setdefault("predictions", []).append({
+        "site": site,
+        "event": event_type,
+        "sent_at": datetime.now(LOCAL_TZ).isoformat(timespec="seconds"),
+        "upstream": current["upstream"],
+        "threshold": threshold,
+        "historical_events": count,
+        "status": "pending",
+    })
+
+
+def resolve_predictions(history, site, transition=None):
+    now = datetime.now(LOCAL_TZ)
+    for prediction in history.get("predictions", []):
+        if prediction.get("site") != site or prediction.get("status") != "pending":
+            continue
+        elapsed = now - datetime.fromisoformat(prediction["sent_at"])
+        if transition is not None:
+            if (prediction["event"] == transition and
+                    timedelta(0) <= elapsed <= timedelta(hours=PREDICTION_VALIDITY_HOURS)):
+                prediction["status"] = "correct"
+                prediction["lead_minutes"] = round(elapsed.total_seconds() / 60, 1)
+            else:
+                prediction["status"] = "incorrect" if prediction["event"] != transition else "expired"
+            prediction["resolved_at"] = now.isoformat(timespec="seconds")
+        elif elapsed > timedelta(hours=PREDICTION_VALIDITY_HOURS):
+            prediction["status"] = "expired"
+            prediction["resolved_at"] = now.isoformat(timespec="seconds")
+
+
 def transition_message(site, name, event_type, event, history):
     levels = event_levels(history, site, event_type)
     avg_level = mean(levels)
@@ -179,7 +215,8 @@ def transition_message(site, name, event_type, event, history):
         f"Upstream at {label}: {event['upstream']:.2f} ft\n"
         f"Downstream: {event['downstream']:.2f} ft\n\n"
         f"Historical {label}s: {len(levels)}\n"
-        f"Average {label} level: {avg_level:.2f} ft"
+        f"Average {label} level: {avg_level:.2f} ft\n"
+        f"Median {label} level: {median(levels):.2f} ft"
         f"{extra}\n\n"
         f"Source: MacVicar Consulting"
     )
@@ -192,7 +229,7 @@ def prediction_message(site, name, action, current, threshold, count):
     return (
         f"{site} {name}\n\n"
         f"Current upstream: {current['upstream']:.2f} ft\n"
-        f"Historical {event_word} level: {threshold:.2f} ft\n"
+        f"Historical median {event_word} level: {threshold:.2f} ft\n"
         f"Distance: {distance:.2f} ft\n"
         f"Current flow: {fmt_flow(current['flow'])} CFS\n"
         f"Historical {event_word}s: {count}\n\n"
@@ -244,6 +281,10 @@ def main():
         baseline = float(baseline)
         change = current_flow - baseline
 
+        # Do not issue a late milestone alert for an already-open S46.
+        if site == "S46" and "s46_major_flow_sent" not in site_state:
+            site_state["s46_major_flow_sent"] = bool(previous_open) and baseline >= S46_MAJOR_FLOW_CFS
+
         print(
             f"{site} {cfg['name']}: "
             f"flow={current_flow} baseline={baseline} change={change:+g}"
@@ -266,6 +307,8 @@ def main():
         elif previous_open and not current_open:
             transition = "closed"
 
+        resolve_predictions(history, site, transition)
+
         if transition:
             event = record_transition(
                 history,
@@ -276,27 +319,52 @@ def main():
             )
 
             if transition == "opened":
+                if site == "S46":
+                    major_flow = current_flow >= S46_MAJOR_FLOW_CFS
+                    title = (f"{site} {cfg['name']} OPENED" if major_flow
+                             else f"{site} {cfg['name']} STARTING TO OPEN")
+                    site_state["s46_major_flow_sent"] = major_flow
+                else:
+                    title = f"{site} {cfg['name']} OPENED"
                 ntfy(
-                    f"{site} {cfg['name']} OPENED",
+                    title,
                     transition_message(site, cfg["name"], "opened", event, history),
+                    priority="default" if site == "S37A" else "high",
                 )
             else:
                 ntfy(
                     f"{site} {cfg['name']} CLOSED",
                     transition_message(site, cfg["name"], "closed", event, history),
+                    priority="default" if site == "S37A" else "high",
                 )
+                if site == "S46":
+                    site_state["s46_major_flow_sent"] = False
 
             # The transition is already the meaningful alert; reset the CFS
-            # baseline so it does not also produce a duplicate 20-CFS alert.
+            # baseline so it does not also produce a duplicate flow-change alert.
             site_state["baseline"] = current_flow
             site_state["open_warning_sent"] = False
             site_state["close_warning_sent"] = False
 
         else:
+            if (site == "S46" and current_open and
+                    not site_state.get("s46_major_flow_sent", False) and
+                    current_flow >= S46_MAJOR_FLOW_CFS):
+                ntfy(
+                    f"S46 Jupiter FLOW REACHED {fmt_flow(current_flow)} CFS",
+                    f"S46 Jupiter flow is now {fmt_flow(current_flow)} CFS.\n\n"
+                    f"Upstream: {r['upstream']:.2f} ft\n"
+                    f"Downstream: {r['downstream']:.2f} ft\n\n"
+                    "Source: MacVicar Consulting",
+                )
+                site_state["s46_major_flow_sent"] = True
+                site_state["baseline"] = current_flow
+                change = 0
+
             # S37A only sends notifications for actual opening/closing events.
             # We still keep tracking its state and history normally.
             if site != "S37A":
-                # Keep the existing 20+ CFS change alerts.
+                # Send cumulative 100+ CFS change alerts.
                 if abs(change) >= CHANGE_THRESHOLD:
                     direction = "INCREASED" if change > 0 else "DECREASED"
                     sign = "+" if change > 0 else ""
@@ -314,10 +382,10 @@ def main():
                     site_state["baseline"] = current_flow
 
                 # Closed spillway: warn within 0.10 ft below the historical opening
-                # level after at least 3 recorded openings.
+                # level after at least 5 recorded openings.
                 open_levels = event_levels(history, site, "opened")
                 if not current_open and len(open_levels) >= MIN_HISTORY_EVENTS:
-                    open_threshold = mean(open_levels)
+                    open_threshold = median(open_levels)
                     in_open_zone = (
                         open_threshold - PREDICTION_DISTANCE_FT
                         <= r["upstream"]
@@ -337,6 +405,10 @@ def main():
                                     len(open_levels),
                                 ),
                             )
+                            record_prediction(
+                                history, site, "opened", r,
+                                open_threshold, len(open_levels),
+                            )
                             site_state["open_warning_sent"] = True
                     else:
                         site_state["open_warning_sent"] = False
@@ -344,10 +416,10 @@ def main():
                     site_state["open_warning_sent"] = False
 
                 # Open spillway: warn within 0.10 ft above the historical closing
-                # level after at least 3 recorded closings.
+                # level after at least 5 recorded closings.
                 close_levels = event_levels(history, site, "closed")
                 if current_open and len(close_levels) >= MIN_HISTORY_EVENTS:
-                    close_threshold = mean(close_levels)
+                    close_threshold = median(close_levels)
                     in_close_zone = (
                         close_threshold
                         <= r["upstream"]
@@ -366,6 +438,10 @@ def main():
                                     close_threshold,
                                     len(close_levels),
                                 ),
+                            )
+                            record_prediction(
+                                history, site, "closed", r,
+                                close_threshold, len(close_levels),
                             )
                             site_state["close_warning_sent"] = True
                     else:
