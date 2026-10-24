@@ -2565,5 +2565,16 @@
       "timestamp": "2026-10-23T20:50:52-04:00",
       "upstream": 7.9
     }
+  ],
+  "predictions": [
+    {
+      "event": "closed",
+      "historical_events": 13,
+      "sent_at": "2026-10-24T13:40:52-04:00",
+      "site": "S46",
+      "status": "pending",
+      "threshold": 14.5,
+      "upstream": 14.5
+    }
   ]
 }
