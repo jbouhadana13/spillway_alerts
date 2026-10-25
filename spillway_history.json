@@ -2676,6 +2676,15 @@
       "status": "pending",
       "threshold": 21.5,
       "upstream": 21.6
+    },
+    {
+      "event": "closed",
+      "historical_events": 9,
+      "sent_at": "2026-10-25T12:20:58-04:00",
+      "site": "S97",
+      "status": "pending",
+      "threshold": 21.5,
+      "upstream": 21.6
     }
   ]
 }
