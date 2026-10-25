@@ -2640,6 +2640,15 @@
       "status": "correct",
       "threshold": 7.9,
       "upstream": 8.0
+    },
+    {
+      "event": "closed",
+      "historical_events": 7,
+      "sent_at": "2026-10-25T04:20:53-04:00",
+      "site": "G56",
+      "status": "pending",
+      "threshold": 7.2,
+      "upstream": 7.2
     }
   ]
 }
