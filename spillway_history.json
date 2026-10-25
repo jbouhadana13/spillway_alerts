@@ -2652,9 +2652,10 @@
     {
       "event": "closed",
       "historical_events": 7,
+      "resolved_at": "2026-10-25T18:30:56-04:00",
       "sent_at": "2026-10-24T18:20:56-04:00",
       "site": "G56",
-      "status": "pending",
+      "status": "expired",
       "threshold": 7.2,
       "upstream": 7.3
     },
