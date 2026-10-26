@@ -2723,6 +2723,15 @@
       "status": "pending",
       "threshold": 21.5,
       "upstream": 21.6
+    },
+    {
+      "event": "closed",
+      "historical_events": 7,
+      "sent_at": "2026-10-25T22:20:54-04:00",
+      "site": "G56",
+      "status": "pending",
+      "threshold": 7.2,
+      "upstream": 7.3
     }
   ]
 }
