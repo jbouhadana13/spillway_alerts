@@ -2672,6 +2672,24 @@
       "site": "S97",
       "timestamp": "2026-10-26T08:20:55-04:00",
       "upstream": 21.5
+    },
+    {
+      "downstream": 4.4,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Lake Worth",
+      "site": "S155",
+      "timestamp": "2026-10-26T08:50:56-04:00",
+      "upstream": 8.3
+    },
+    {
+      "downstream": 4.5,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Boca Raton",
+      "site": "G56",
+      "timestamp": "2026-10-26T08:50:56-04:00",
+      "upstream": 7.5
     }
   ],
   "predictions": [
@@ -2761,18 +2779,22 @@
     {
       "event": "closed",
       "historical_events": 7,
+      "lead_minutes": 630.0,
+      "resolved_at": "2026-10-26T08:50:56-04:00",
       "sent_at": "2026-10-25T22:20:54-04:00",
       "site": "G56",
-      "status": "pending",
+      "status": "correct",
       "threshold": 7.2,
       "upstream": 7.3
     },
     {
       "event": "closed",
       "historical_events": 7,
+      "lead_minutes": 360.1,
+      "resolved_at": "2026-10-26T08:50:56-04:00",
       "sent_at": "2026-10-26T02:50:52-04:00",
       "site": "G56",
-      "status": "pending",
+      "status": "correct",
       "threshold": 7.2,
       "upstream": 7.2
     }
