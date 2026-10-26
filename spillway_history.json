@@ -2690,6 +2690,15 @@
       "site": "G56",
       "timestamp": "2026-10-26T08:50:56-04:00",
       "upstream": 7.5
+    },
+    {
+      "downstream": 2.7,
+      "event": "opened",
+      "flow": 144.0,
+      "name": "Boca Raton",
+      "site": "G56",
+      "timestamp": "2026-10-26T14:50:54-04:00",
+      "upstream": 8.7
     }
   ],
   "predictions": [
@@ -2759,9 +2768,10 @@
     {
       "event": "opened",
       "historical_events": 19,
+      "resolved_at": "2026-10-26T14:50:54-04:00",
       "sent_at": "2026-10-25T14:50:53-04:00",
       "site": "S40",
-      "status": "pending",
+      "status": "expired",
       "threshold": 8.4,
       "upstream": 8.3
     },
@@ -2801,11 +2811,22 @@
     {
       "event": "opened",
       "historical_events": 7,
+      "lead_minutes": 120.0,
+      "resolved_at": "2026-10-26T14:50:54-04:00",
       "sent_at": "2026-10-26T12:50:56-04:00",
       "site": "G56",
-      "status": "pending",
+      "status": "correct",
       "threshold": 8.3,
       "upstream": 8.3
+    },
+    {
+      "event": "opened",
+      "historical_events": 10,
+      "sent_at": "2026-10-26T14:50:54-04:00",
+      "site": "S97",
+      "status": "pending",
+      "threshold": 21.8,
+      "upstream": 21.7
     }
   ]
 }
