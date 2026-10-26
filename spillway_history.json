@@ -2797,6 +2797,15 @@
       "status": "correct",
       "threshold": 7.2,
       "upstream": 7.2
+    },
+    {
+      "event": "opened",
+      "historical_events": 7,
+      "sent_at": "2026-10-26T12:50:56-04:00",
+      "site": "G56",
+      "status": "pending",
+      "threshold": 8.3,
+      "upstream": 8.3
     }
   ]
 }
