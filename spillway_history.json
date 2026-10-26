@@ -2663,6 +2663,15 @@
       "site": "S37A",
       "timestamp": "2026-10-26T06:50:55-04:00",
       "upstream": 2.9
+    },
+    {
+      "downstream": 8.7,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Palm City",
+      "site": "S97",
+      "timestamp": "2026-10-26T08:20:55-04:00",
+      "upstream": 21.5
     }
   ],
   "predictions": [
@@ -2710,18 +2719,22 @@
     {
       "event": "closed",
       "historical_events": 9,
+      "lead_minutes": 1370.0,
+      "resolved_at": "2026-10-26T08:20:55-04:00",
       "sent_at": "2026-10-25T09:30:55-04:00",
       "site": "S97",
-      "status": "pending",
+      "status": "correct",
       "threshold": 21.5,
       "upstream": 21.6
     },
     {
       "event": "closed",
       "historical_events": 9,
+      "lead_minutes": 1200.0,
+      "resolved_at": "2026-10-26T08:20:55-04:00",
       "sent_at": "2026-10-25T12:20:58-04:00",
       "site": "S97",
-      "status": "pending",
+      "status": "correct",
       "threshold": 21.5,
       "upstream": 21.6
     },
@@ -2737,9 +2750,11 @@
     {
       "event": "closed",
       "historical_events": 9,
+      "lead_minutes": 720.0,
+      "resolved_at": "2026-10-26T08:20:55-04:00",
       "sent_at": "2026-10-25T20:20:54-04:00",
       "site": "S97",
-      "status": "pending",
+      "status": "correct",
       "threshold": 21.5,
       "upstream": 21.6
     },
