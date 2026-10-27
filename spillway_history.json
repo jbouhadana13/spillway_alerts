@@ -2726,6 +2726,15 @@
       "site": "S37A",
       "timestamp": "2026-10-26T19:50:55-04:00",
       "upstream": 3.4
+    },
+    {
+      "downstream": 3.9,
+      "event": "opened",
+      "flow": 151.0,
+      "name": "Lake Worth",
+      "site": "S155",
+      "timestamp": "2026-10-26T23:50:53-04:00",
+      "upstream": 8.7
     }
   ],
   "predictions": [
@@ -2860,9 +2869,11 @@
     {
       "event": "opened",
       "historical_events": 16,
+      "lead_minutes": 479.9,
+      "resolved_at": "2026-10-26T23:50:53-04:00",
       "sent_at": "2026-10-26T15:50:57-04:00",
       "site": "S155",
-      "status": "pending",
+      "status": "correct",
       "threshold": 8.7,
       "upstream": 8.6
     },
