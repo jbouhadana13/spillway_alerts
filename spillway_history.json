@@ -2762,6 +2762,15 @@
       "site": "S97",
       "timestamp": "2026-10-27T07:20:55-04:00",
       "upstream": 21.8
+    },
+    {
+      "downstream": 8.3,
+      "event": "opened",
+      "flow": 202.0,
+      "name": "Palm City",
+      "site": "S97",
+      "timestamp": "2026-10-27T12:50:57-04:00",
+      "upstream": 21.8
     }
   ],
   "predictions": [
@@ -2925,9 +2934,11 @@
     {
       "event": "opened",
       "historical_events": 11,
+      "lead_minutes": 320.0,
+      "resolved_at": "2026-10-27T12:50:57-04:00",
       "sent_at": "2026-10-27T07:30:57-04:00",
       "site": "S97",
-      "status": "pending",
+      "status": "correct",
       "threshold": 21.8,
       "upstream": 21.8
     },
