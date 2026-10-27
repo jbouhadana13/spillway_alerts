@@ -2744,6 +2744,15 @@
       "site": "S37A",
       "timestamp": "2026-10-27T02:50:58-04:00",
       "upstream": 3.9
+    },
+    {
+      "downstream": 2.0,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Pompano Beach",
+      "site": "S37A",
+      "timestamp": "2026-10-27T06:20:57-04:00",
+      "upstream": 2.8
     }
   ],
   "predictions": [
