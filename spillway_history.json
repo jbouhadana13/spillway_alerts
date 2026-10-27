@@ -2921,6 +2921,15 @@
       "status": "pending",
       "threshold": 8.4,
       "upstream": 8.4
+    },
+    {
+      "event": "opened",
+      "historical_events": 11,
+      "sent_at": "2026-10-27T07:30:57-04:00",
+      "site": "S97",
+      "status": "pending",
+      "threshold": 21.8,
+      "upstream": 21.8
     }
   ]
 }
