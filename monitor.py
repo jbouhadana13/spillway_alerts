@@ -5,7 +5,6 @@ import html
 import urllib.request
 import urllib.error
 from datetime import datetime, timedelta
-from email.header import Header
 from pathlib import Path
 from statistics import mean, median
 from zoneinfo import ZoneInfo
@@ -98,8 +97,6 @@ def save_json(path, value):
 
 
 def ntfy(title, message, priority="high"):
-    url = f"https://ntfy.sh/{NTFY_TOPIC}"
-
     # Use custom emojis for transitions and predictive warnings.
     if title.endswith(" OPENED") or title.endswith(" STARTING TO OPEN"):
         prefix = "🥳"
@@ -110,8 +107,7 @@ def ntfy(title, message, priority="high"):
     else:
         prefix = "🫪🚨"
 
-    # S46 Jupiter increases/openings are especially important: make them
-    # ntfy max-priority alerts and clearly mark them as SUPER ALERTS.
+    # S46 Jupiter increases/openings are max-priority SUPER ALERTS.
     if (title.startswith("S46 Jupiter OPENED") or
             title.startswith("S46 Jupiter INCREASED") or
             title.startswith("S46 Jupiter FLOW REACHED")):
@@ -119,22 +115,20 @@ def ntfy(title, message, priority="high"):
         prefix = "🚨🚨🚨"
         priority = "max"
 
-    # RFC 2047 keeps the HTTP header ASCII-safe while preserving Unicode.
-    # Keep title headers safely under ntfy limits.
-    full_title = f"{prefix} {title}"
-    while len(Header(full_title, "utf-8").encode().encode("ascii")) > 180:
-        full_title = full_title[:-1]
-    encoded_title = Header(full_title, "utf-8").encode()
-
+    # Post JSON instead of an RFC-2047 encoded Title HTTP header.
+    # Long emoji-rich headers can be folded and rejected by nginx (HTTP 400).
+    priorities = {"min": 1, "low": 2, "default": 3, "high": 4, "max": 5}
+    payload = {
+        "topic": NTFY_TOPIC,
+        "title": f"{prefix} {title}",
+        "message": message,
+        "priority": priorities[priority],
+    }
     req = urllib.request.Request(
-        url,
-        data=message.encode("utf-8"),
+        "https://ntfy.sh/",
+        data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
         method="POST",
-        headers={
-            "Title": encoded_title,
-            "Priority": priority,
-            "Content-Type": "text/plain; charset=utf-8",
-        },
+        headers={"Content-Type": "application/json; charset=utf-8"},
     )
 
     try:
