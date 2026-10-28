@@ -2807,6 +2807,15 @@
       "site": "S37A",
       "timestamp": "2026-10-27T23:50:53-04:00",
       "upstream": 4.8
+    },
+    {
+      "downstream": 3.3,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Boca Raton",
+      "site": "G56",
+      "timestamp": "2026-10-28T15:20:59-04:00",
+      "upstream": 6.7
     }
   ],
   "predictions": [
@@ -3008,6 +3017,15 @@
       "status": "pending",
       "threshold": 6.8,
       "upstream": 6.8
+    },
+    {
+      "event": "closed",
+      "historical_events": 20,
+      "sent_at": "2026-10-28T15:20:59-04:00",
+      "site": "S40",
+      "status": "pending",
+      "threshold": 7.9,
+      "upstream": 8.0
     }
   ]
 }
