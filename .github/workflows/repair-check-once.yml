@@ -1,4 +1,5 @@
 name: One-time Repair Check
+# Verification after switching ntfy to JSON publishing
 on:
   push:
     paths:
