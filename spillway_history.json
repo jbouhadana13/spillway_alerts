@@ -2816,6 +2816,15 @@
       "site": "G56",
       "timestamp": "2026-10-28T15:20:59-04:00",
       "upstream": 6.7
+    },
+    {
+      "downstream": 1.7,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-10-28T17:50:57-04:00",
+      "upstream": 8.0
     }
   ],
   "predictions": [
@@ -3021,9 +3030,11 @@
     {
       "event": "closed",
       "historical_events": 20,
+      "lead_minutes": 150.0,
+      "resolved_at": "2026-10-28T17:50:57-04:00",
       "sent_at": "2026-10-28T15:20:59-04:00",
       "site": "S40",
-      "status": "pending",
+      "status": "correct",
       "threshold": 7.9,
       "upstream": 8.0
     }
