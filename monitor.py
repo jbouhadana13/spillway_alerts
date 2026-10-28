@@ -2,7 +2,7 @@ import os
 import re
 import json
 import html
-import urllib.request
+import urllib.request\nimport urllib.error
 from datetime import datetime, timedelta
 from email.header import Header
 from pathlib import Path
@@ -119,7 +119,7 @@ def ntfy(title, message, priority="high"):
         priority = "max"
 
     # RFC 2047 keeps the HTTP header ASCII-safe while preserving Unicode.
-    encoded_title = Header(f"{prefix} {title}", "utf-8").encode()
+    # Keep title headers safely under ntfy limits.\n    full_title = f"{prefix} {title}"\n    while len(Header(full_title, "utf-8").encode().encode("ascii")) > 180:\n        full_title = full_title[:-1]\n    encoded_title = Header(full_title, "utf-8").encode()
 
     req = urllib.request.Request(
         url,
