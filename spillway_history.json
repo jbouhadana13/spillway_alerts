@@ -2780,6 +2780,24 @@
       "site": "S37A",
       "timestamp": "2026-10-27T16:20:55-04:00",
       "upstream": 4.1
+    },
+    {
+      "downstream": 2.9,
+      "event": "opened",
+      "flow": 157.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-10-27T20:20:55-04:00",
+      "upstream": 8.5
+    },
+    {
+      "downstream": 3.4,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Pompano Beach",
+      "site": "S37A",
+      "timestamp": "2026-10-27T20:20:55-04:00",
+      "upstream": 3.4
     }
   ],
   "predictions": [
@@ -2935,9 +2953,11 @@
     {
       "event": "opened",
       "historical_events": 19,
+      "lead_minutes": 1350.1,
+      "resolved_at": "2026-10-27T20:20:55-04:00",
       "sent_at": "2026-10-26T21:50:52-04:00",
       "site": "S40",
-      "status": "pending",
+      "status": "correct",
       "threshold": 8.4,
       "upstream": 8.4
     },
