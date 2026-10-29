@@ -3067,9 +3067,10 @@
     {
       "event": "closed",
       "historical_events": 9,
+      "resolved_at": "2026-10-29T14:10:39-04:00",
       "sent_at": "2026-10-28T14:07:08-04:00",
       "site": "S44",
-      "status": "pending",
+      "status": "expired",
       "threshold": 6.8,
       "upstream": 6.8
     },
