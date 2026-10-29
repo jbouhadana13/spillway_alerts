@@ -2870,6 +2870,15 @@
       "site": "S46",
       "timestamp": "2026-10-29T09:20:40-04:00",
       "upstream": 12.7
+    },
+    {
+      "downstream": 5.4,
+      "event": "opened",
+      "flow": 278.0,
+      "name": "Jupiter",
+      "site": "S46",
+      "timestamp": "2026-10-29T14:50:38-04:00",
+      "upstream": 14.0
     }
   ],
   "predictions": [
@@ -3120,6 +3129,15 @@
       "status": "pending",
       "threshold": 6.8,
       "upstream": 6.8
+    },
+    {
+      "event": "closed",
+      "historical_events": 17,
+      "sent_at": "2026-10-29T14:50:38-04:00",
+      "site": "S155",
+      "status": "pending",
+      "threshold": 8.4,
+      "upstream": 8.5
     }
   ]
 }
