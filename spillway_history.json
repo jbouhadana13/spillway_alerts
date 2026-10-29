@@ -3110,6 +3110,15 @@
       "status": "pending",
       "threshold": 21.5,
       "upstream": 21.6
+    },
+    {
+      "event": "closed",
+      "historical_events": 9,
+      "sent_at": "2026-10-29T10:50:44-04:00",
+      "site": "S44",
+      "status": "pending",
+      "threshold": 6.8,
+      "upstream": 6.8
     }
   ]
 }
