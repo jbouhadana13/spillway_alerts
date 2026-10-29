@@ -2834,6 +2834,15 @@
       "site": "S37A",
       "timestamp": "2026-10-28T19:50:59-04:00",
       "upstream": 2.6
+    },
+    {
+      "downstream": 2.9,
+      "event": "opened",
+      "flow": 129.0,
+      "name": "Boca Raton",
+      "site": "G56",
+      "timestamp": "2026-10-28T20:50:59-04:00",
+      "upstream": 8.0
     }
   ],
   "predictions": [
