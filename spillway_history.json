@@ -2906,6 +2906,15 @@
       "site": "S37A",
       "timestamp": "2026-10-30T10:20:40-04:00",
       "upstream": 3.4
+    },
+    {
+      "downstream": 3.5,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Pompano Beach",
+      "site": "S37A",
+      "timestamp": "2026-10-30T11:20:40-04:00",
+      "upstream": 3.4
     }
   ],
   "predictions": [
@@ -3237,6 +3246,15 @@
       "event": "opened",
       "historical_events": 20,
       "sent_at": "2026-10-30T10:20:40-04:00",
+      "site": "S40",
+      "status": "pending",
+      "threshold": 8.45,
+      "upstream": 8.4
+    },
+    {
+      "event": "opened",
+      "historical_events": 20,
+      "sent_at": "2026-10-30T11:20:40-04:00",
       "site": "S40",
       "status": "pending",
       "threshold": 8.45,
