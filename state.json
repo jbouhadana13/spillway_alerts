@@ -43,7 +43,7 @@
     "s46_major_flow_sent": true
   },
   "S49": {
-    "baseline": 835.0,
+    "baseline": 664.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
