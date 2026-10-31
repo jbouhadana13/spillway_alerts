@@ -3299,9 +3299,10 @@
     {
       "event": "opened",
       "historical_events": 20,
+      "resolved_at": "2026-10-31T11:30:16-04:00",
       "sent_at": "2026-10-30T11:20:40-04:00",
       "site": "S40",
-      "status": "pending",
+      "status": "expired",
       "threshold": 8.45,
       "upstream": 8.4
     },
