@@ -3521,6 +3521,15 @@
       "status": "pending",
       "threshold": 8.4,
       "upstream": 8.5
+    },
+    {
+      "event": "closed",
+      "historical_events": 21,
+      "sent_at": "2026-11-01T13:20:17-05:00",
+      "site": "S40",
+      "status": "pending",
+      "threshold": 7.9,
+      "upstream": 7.9
     }
   ]
 }
