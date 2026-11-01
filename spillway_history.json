@@ -3425,6 +3425,24 @@
       "status": "pending",
       "threshold": 21.5,
       "upstream": 21.6
+    },
+    {
+      "event": "opened",
+      "historical_events": 20,
+      "sent_at": "2026-10-31T22:20:16-04:00",
+      "site": "S40",
+      "status": "pending",
+      "threshold": 8.45,
+      "upstream": 8.4
+    },
+    {
+      "event": "closed",
+      "historical_events": 9,
+      "sent_at": "2026-10-31T22:20:16-04:00",
+      "site": "G56",
+      "status": "pending",
+      "threshold": 7.2,
+      "upstream": 7.3
     }
   ]
 }
