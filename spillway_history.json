@@ -3567,9 +3567,10 @@
     {
       "event": "closed",
       "historical_events": 17,
+      "resolved_at": "2026-11-02T12:21:05-05:00",
       "sent_at": "2026-11-01T12:20:17-05:00",
       "site": "S155",
-      "status": "pending",
+      "status": "expired",
       "threshold": 8.4,
       "upstream": 8.5
     },
