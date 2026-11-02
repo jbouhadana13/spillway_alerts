@@ -3500,9 +3500,10 @@
     {
       "event": "closed",
       "historical_events": 9,
+      "resolved_at": "2026-11-01T21:20:16-05:00",
       "sent_at": "2026-10-31T22:20:16-04:00",
       "site": "G56",
-      "status": "pending",
+      "status": "expired",
       "threshold": 7.2,
       "upstream": 7.3
     },
