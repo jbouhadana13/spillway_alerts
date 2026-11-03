@@ -3068,6 +3068,15 @@
       "site": "S80",
       "timestamp": "2026-11-02T00:50:15-05:00",
       "upstream": 13.6
+    },
+    {
+      "downstream": 10.4,
+      "event": "closed",
+      "flow": -240.0,
+      "name": "N. Palm Beach",
+      "site": "S44",
+      "timestamp": "2026-11-03T13:51:09-05:00",
+      "upstream": 0.0
     }
   ],
   "predictions": [
