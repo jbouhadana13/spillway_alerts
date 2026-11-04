@@ -3113,6 +3113,15 @@
       "site": "G56",
       "timestamp": "2026-11-03T23:20:59-05:00",
       "upstream": -3.8
+    },
+    {
+      "downstream": -5.1,
+      "event": "opened",
+      "flow": 102.0,
+      "name": "Boca Raton",
+      "site": "G56",
+      "timestamp": "2026-11-04T07:51:00-05:00",
+      "upstream": -2.9
     }
   ],
   "predictions": [
