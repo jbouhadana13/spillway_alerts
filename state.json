@@ -30,13 +30,13 @@
     "open_warning_sent": false
   },
   "S44": {
-    "baseline": 908.0,
+    "baseline": 481.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
   },
   "S46": {
-    "baseline": 3689.0,
+    "baseline": 3563.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false,
@@ -61,7 +61,7 @@
     "open_warning_sent": false
   },
   "S99": {
-    "baseline": 3540.0,
+    "baseline": 3420.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
