@@ -3095,6 +3095,15 @@
       "site": "S44",
       "timestamp": "2026-11-03T15:51:06-05:00",
       "upstream": 0.0
+    },
+    {
+      "downstream": 10.1,
+      "event": "opened",
+      "flow": 369.0,
+      "name": "N. Palm Beach",
+      "site": "S44",
+      "timestamp": "2026-11-03T19:50:59-05:00",
+      "upstream": 0.0
     }
   ],
   "predictions": [
