@@ -3140,6 +3140,24 @@
       "site": "S80",
       "timestamp": "2026-11-06T12:50:59-05:00",
       "upstream": 13.6
+    },
+    {
+      "downstream": 1.7,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Boynton Beach",
+      "site": "S41",
+      "timestamp": "2026-11-06T15:50:57-05:00",
+      "upstream": 7.6
+    },
+    {
+      "downstream": 1.5,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-11-06T15:50:57-05:00",
+      "upstream": 7.4
     }
   ],
   "predictions": [
