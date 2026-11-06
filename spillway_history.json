@@ -3718,6 +3718,15 @@
       "status": "expired",
       "threshold": 21.5,
       "upstream": 21.6
+    },
+    {
+      "event": "closed",
+      "historical_events": 12,
+      "sent_at": "2026-11-05T19:50:58-05:00",
+      "site": "S44",
+      "status": "pending",
+      "threshold": 6.8,
+      "upstream": 6.8
     }
   ]
 }
