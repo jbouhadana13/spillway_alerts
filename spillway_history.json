@@ -3158,6 +3158,15 @@
       "site": "S40",
       "timestamp": "2026-11-06T15:50:57-05:00",
       "upstream": 7.4
+    },
+    {
+      "downstream": 2.0,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Lake Worth",
+      "site": "S155",
+      "timestamp": "2026-11-06T16:20:59-05:00",
+      "upstream": 7.8
     }
   ],
   "predictions": [
