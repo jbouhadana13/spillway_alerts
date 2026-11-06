@@ -3167,6 +3167,33 @@
       "site": "S155",
       "timestamp": "2026-11-06T16:20:59-05:00",
       "upstream": 7.8
+    },
+    {
+      "downstream": 2.9,
+      "event": "opened",
+      "flow": 374.0,
+      "name": "Lake Worth",
+      "site": "S155",
+      "timestamp": "2026-11-06T17:51:01-05:00",
+      "upstream": 8.3
+    },
+    {
+      "downstream": 2.9,
+      "event": "opened",
+      "flow": 345.0,
+      "name": "Boynton Beach",
+      "site": "S41",
+      "timestamp": "2026-11-06T17:51:01-05:00",
+      "upstream": 8.3
+    },
+    {
+      "downstream": 3.1,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Pompano Beach",
+      "site": "S37A",
+      "timestamp": "2026-11-06T17:51:01-05:00",
+      "upstream": 3.1
     }
   ],
   "predictions": [
