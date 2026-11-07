@@ -3194,6 +3194,15 @@
       "site": "S37A",
       "timestamp": "2026-11-06T17:51:01-05:00",
       "upstream": 3.1
+    },
+    {
+      "downstream": 3.3,
+      "event": "opened",
+      "flow": 447.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-11-06T19:50:56-05:00",
+      "upstream": 8.3
     }
   ],
   "predictions": [
