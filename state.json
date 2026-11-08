@@ -33,10 +33,10 @@
     "baseline": 0.0,
     "close_warning_sent": false,
     "is_open": false,
-    "open_warning_sent": false
+    "open_warning_sent": true
   },
   "S46": {
-    "baseline": 1010.0,
+    "baseline": 1129.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false,
@@ -49,7 +49,7 @@
     "open_warning_sent": false
   },
   "S80": {
-    "baseline": 4990.0,
+    "baseline": 5096.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
