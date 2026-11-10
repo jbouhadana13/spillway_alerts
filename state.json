@@ -19,12 +19,12 @@
   },
   "S40": {
     "baseline": 171.0,
-    "close_warning_sent": false,
+    "close_warning_sent": true,
     "is_open": true,
     "open_warning_sent": false
   },
   "S41": {
-    "baseline": 699.0,
+    "baseline": 492.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
