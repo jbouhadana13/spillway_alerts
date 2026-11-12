@@ -4311,9 +4311,10 @@
     {
       "event": "closed",
       "historical_events": 10,
+      "resolved_at": "2026-11-12T13:51:09-05:00",
       "sent_at": "2026-11-11T13:50:47-05:00",
       "site": "G56",
-      "status": "pending",
+      "status": "expired",
       "threshold": 7.2,
       "upstream": 7.3
     },
