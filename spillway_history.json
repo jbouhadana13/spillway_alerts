@@ -3500,6 +3500,15 @@
       "site": "S40",
       "timestamp": "2026-11-12T21:21:01-05:00",
       "upstream": 8.3
+    },
+    {
+      "downstream": 1.1,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Delray Beach",
+      "site": "S40",
+      "timestamp": "2026-11-13T03:50:39-05:00",
+      "upstream": 7.9
     }
   ],
   "predictions": [
@@ -4383,9 +4392,11 @@
     {
       "event": "closed",
       "historical_events": 29,
+      "lead_minutes": 179.6,
+      "resolved_at": "2026-11-13T03:50:39-05:00",
       "sent_at": "2026-11-13T00:51:02-05:00",
       "site": "S40",
-      "status": "pending",
+      "status": "correct",
       "threshold": 7.9,
       "upstream": 8.0
     }
