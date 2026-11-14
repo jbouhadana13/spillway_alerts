@@ -3509,6 +3509,15 @@
       "site": "S40",
       "timestamp": "2026-11-13T03:50:39-05:00",
       "upstream": 7.9
+    },
+    {
+      "downstream": 1.7,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Boca Raton",
+      "site": "G56",
+      "timestamp": "2026-11-14T08:50:25-05:00",
+      "upstream": 7.5
     }
   ],
   "predictions": [
@@ -4412,9 +4421,11 @@
     {
       "event": "closed",
       "historical_events": 10,
+      "lead_minutes": 869.9,
+      "resolved_at": "2026-11-14T08:50:25-05:00",
       "sent_at": "2026-11-13T18:20:30-05:00",
       "site": "G56",
-      "status": "pending",
+      "status": "correct",
       "threshold": 7.2,
       "upstream": 7.3
     },
@@ -4430,20 +4441,33 @@
     {
       "event": "closed",
       "historical_events": 10,
+      "lead_minutes": 300.0,
+      "resolved_at": "2026-11-14T08:50:25-05:00",
       "sent_at": "2026-11-14T03:50:25-05:00",
       "site": "G56",
-      "status": "pending",
+      "status": "correct",
       "threshold": 7.2,
       "upstream": 7.2
     },
     {
       "event": "closed",
       "historical_events": 10,
+      "lead_minutes": 60.0,
+      "resolved_at": "2026-11-14T08:50:25-05:00",
       "sent_at": "2026-11-14T07:50:26-05:00",
       "site": "G56",
-      "status": "pending",
+      "status": "correct",
       "threshold": 7.2,
       "upstream": 7.2
+    },
+    {
+      "event": "closed",
+      "historical_events": 18,
+      "sent_at": "2026-11-14T08:50:25-05:00",
+      "site": "S155",
+      "status": "pending",
+      "threshold": 8.350000000000001,
+      "upstream": 8.4
     }
   ]
 }
