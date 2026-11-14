@@ -4435,6 +4435,15 @@
       "status": "pending",
       "threshold": 7.2,
       "upstream": 7.2
+    },
+    {
+      "event": "closed",
+      "historical_events": 10,
+      "sent_at": "2026-11-14T07:50:26-05:00",
+      "site": "G56",
+      "status": "pending",
+      "threshold": 7.2,
+      "upstream": 7.2
     }
   ]
 }
