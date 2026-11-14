@@ -4412,9 +4412,10 @@
     {
       "event": "opened",
       "historical_events": 29,
+      "resolved_at": "2026-11-14T13:50:31-05:00",
       "sent_at": "2026-11-13T13:50:27-05:00",
       "site": "S40",
-      "status": "pending",
+      "status": "expired",
       "threshold": 8.3,
       "upstream": 8.3
     },
