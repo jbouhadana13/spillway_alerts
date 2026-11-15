@@ -4442,9 +4442,10 @@
     {
       "event": "closed",
       "historical_events": 13,
+      "resolved_at": "2026-11-15T00:20:32-05:00",
       "sent_at": "2026-11-14T00:20:26-05:00",
       "site": "S44",
-      "status": "pending",
+      "status": "expired",
       "threshold": 6.8,
       "upstream": 6.8
     },
