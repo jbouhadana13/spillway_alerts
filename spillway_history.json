@@ -3518,6 +3518,15 @@
       "site": "G56",
       "timestamp": "2026-11-14T08:50:25-05:00",
       "upstream": 7.5
+    },
+    {
+      "downstream": 1.6,
+      "event": "opened",
+      "flow": 153.0,
+      "name": "Boca Raton",
+      "site": "G56",
+      "timestamp": "2026-11-14T20:20:31-05:00",
+      "upstream": 8.7
     }
   ],
   "predictions": [
@@ -4482,9 +4491,11 @@
     {
       "event": "opened",
       "historical_events": 10,
+      "lead_minutes": 450.0,
+      "resolved_at": "2026-11-14T20:20:31-05:00",
       "sent_at": "2026-11-14T12:50:34-05:00",
       "site": "G56",
-      "status": "pending",
+      "status": "correct",
       "threshold": 8.2,
       "upstream": 8.1
     }
