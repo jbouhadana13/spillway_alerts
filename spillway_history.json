@@ -4530,6 +4530,15 @@
       "status": "correct",
       "threshold": 14.7,
       "upstream": 14.6
+    },
+    {
+      "event": "closed",
+      "historical_events": 15,
+      "sent_at": "2026-11-15T22:51:04-05:00",
+      "site": "S46",
+      "status": "pending",
+      "threshold": 14.5,
+      "upstream": 14.6
     }
   ]
 }
