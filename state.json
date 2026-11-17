@@ -31,7 +31,7 @@
   },
   "S44": {
     "baseline": 312.0,
-    "close_warning_sent": false,
+    "close_warning_sent": true,
     "is_open": true,
     "open_warning_sent": false
   },
@@ -43,13 +43,13 @@
     "s46_major_flow_sent": true
   },
   "S49": {
-    "baseline": 1183.0,
+    "baseline": 1309.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
   },
   "S80": {
-    "baseline": 1660.0,
+    "baseline": 3928.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
