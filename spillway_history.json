@@ -4645,9 +4645,10 @@
     {
       "event": "closed",
       "historical_events": 30,
+      "resolved_at": "2026-11-17T13:30:27-05:00",
       "sent_at": "2026-11-16T13:21:04-05:00",
       "site": "S40",
-      "status": "pending",
+      "status": "expired",
       "threshold": 7.9,
       "upstream": 8.0
     },
