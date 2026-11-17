@@ -3617,6 +3617,15 @@
       "site": "S49",
       "timestamp": "2026-11-17T11:20:21-05:00",
       "upstream": 17.3
+    },
+    {
+      "downstream": 1.8,
+      "event": "opened",
+      "flow": 1183.0,
+      "name": "Port St. Lucie",
+      "site": "S49",
+      "timestamp": "2026-11-17T11:50:22-05:00",
+      "upstream": 17.0
     }
   ],
   "predictions": [
