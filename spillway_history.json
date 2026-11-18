@@ -3635,6 +3635,15 @@
       "site": "S41",
       "timestamp": "2026-11-18T10:50:20-05:00",
       "upstream": 7.2
+    },
+    {
+      "downstream": 1.5,
+      "event": "closed",
+      "flow": 0.0,
+      "name": "Stuart Locks",
+      "site": "S80",
+      "timestamp": "2026-11-18T12:50:22-05:00",
+      "upstream": 13.6
     }
   ],
   "predictions": [
