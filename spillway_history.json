@@ -3671,6 +3671,15 @@
       "site": "S40",
       "timestamp": "2026-11-18T18:20:23-05:00",
       "upstream": 7.5
+    },
+    {
+      "downstream": 1.5,
+      "event": "opened",
+      "flow": 2499.0,
+      "name": "Stuart Locks",
+      "site": "S80",
+      "timestamp": "2026-11-19T08:20:30-05:00",
+      "upstream": 13.6
     }
   ],
   "predictions": [
@@ -4720,9 +4729,11 @@
     {
       "event": "opened",
       "historical_events": 5,
+      "lead_minutes": 1160.1,
+      "resolved_at": "2026-11-19T08:20:30-05:00",
       "sent_at": "2026-11-18T13:00:23-05:00",
       "site": "S80",
-      "status": "pending",
+      "status": "correct",
       "threshold": 13.6,
       "upstream": 13.6
     },
