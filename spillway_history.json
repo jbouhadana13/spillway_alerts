@@ -3752,6 +3752,24 @@
       "site": "S155",
       "timestamp": "2026-11-22T17:50:09-05:00",
       "upstream": 7.9
+    },
+    {
+      "downstream": 7.0,
+      "event": "opened",
+      "flow": 666.0,
+      "name": "Jupiter",
+      "site": "S46",
+      "timestamp": "2026-11-22T18:50:19-05:00",
+      "upstream": 14.0
+    },
+    {
+      "downstream": 2.8,
+      "event": "opened",
+      "flow": 264.0,
+      "name": "Lake Worth",
+      "site": "S155",
+      "timestamp": "2026-11-22T18:50:19-05:00",
+      "upstream": 8.3
     }
   ],
   "predictions": [
