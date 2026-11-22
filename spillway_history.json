@@ -4876,9 +4876,10 @@
     {
       "event": "closed",
       "historical_events": 5,
+      "resolved_at": "2026-11-21T23:00:35-05:00",
       "sent_at": "2026-11-20T22:50:40-05:00",
       "site": "S80",
-      "status": "pending",
+      "status": "expired",
       "threshold": 13.6,
       "upstream": 13.6
     },
