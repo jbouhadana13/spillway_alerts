@@ -3797,6 +3797,15 @@
       "site": "S44",
       "timestamp": "2026-11-23T12:50:10-05:00",
       "upstream": 6.7
+    },
+    {
+      "downstream": 2.1,
+      "event": "opened",
+      "flow": 479.0,
+      "name": "N. Palm Beach",
+      "site": "S44",
+      "timestamp": "2026-11-23T15:20:21-05:00",
+      "upstream": 7.3
     }
   ],
   "predictions": [
@@ -5035,9 +5044,11 @@
     {
       "event": "opened",
       "historical_events": 13,
+      "lead_minutes": 60.2,
+      "resolved_at": "2026-11-23T15:20:21-05:00",
       "sent_at": "2026-11-23T14:20:09-05:00",
       "site": "S44",
-      "status": "pending",
+      "status": "correct",
       "threshold": 7.3,
       "upstream": 7.2
     }
