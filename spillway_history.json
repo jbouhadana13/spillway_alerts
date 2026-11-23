@@ -5031,6 +5031,15 @@
       "status": "pending",
       "threshold": 7.6,
       "upstream": 7.6
+    },
+    {
+      "event": "opened",
+      "historical_events": 13,
+      "sent_at": "2026-11-23T14:20:09-05:00",
+      "site": "S44",
+      "status": "pending",
+      "threshold": 7.3,
+      "upstream": 7.2
     }
   ]
 }
