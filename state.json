@@ -6,7 +6,7 @@
     "open_warning_sent": false
   },
   "S155": {
-    "baseline": 4737.0,
+    "baseline": 4578.0,
     "close_warning_sent": true,
     "is_open": true,
     "open_warning_sent": false
@@ -25,7 +25,7 @@
   },
   "S41": {
     "baseline": 2675.0,
-    "close_warning_sent": true,
+    "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
   },
@@ -43,7 +43,7 @@
     "s46_major_flow_sent": true
   },
   "S49": {
-    "baseline": 1338.0,
+    "baseline": 1593.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
@@ -55,13 +55,13 @@
     "open_warning_sent": false
   },
   "S97": {
-    "baseline": 1392.0,
+    "baseline": 1684.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
   },
   "S99": {
-    "baseline": 1952.0,
+    "baseline": 2081.0,
     "close_warning_sent": false,
     "is_open": true,
     "open_warning_sent": false
