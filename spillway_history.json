@@ -3887,6 +3887,15 @@
       "site": "S97",
       "timestamp": "2026-11-26T10:20:44-05:00",
       "upstream": 19.0
+    },
+    {
+      "downstream": 9.0,
+      "event": "opened",
+      "flow": 831.0,
+      "name": "Palm City",
+      "site": "S97",
+      "timestamp": "2026-11-26T11:20:44-05:00",
+      "upstream": 19.0
     }
   ],
   "predictions": [
