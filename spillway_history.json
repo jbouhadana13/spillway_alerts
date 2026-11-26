@@ -5177,18 +5177,20 @@
     {
       "event": "closed",
       "historical_events": 19,
+      "resolved_at": "2026-11-26T16:50:44-05:00",
       "sent_at": "2026-11-25T16:50:41-05:00",
       "site": "S155",
-      "status": "pending",
+      "status": "expired",
       "threshold": 8.3,
       "upstream": 8.4
     },
     {
       "event": "closed",
       "historical_events": 5,
+      "resolved_at": "2026-11-26T16:50:44-05:00",
       "sent_at": "2026-11-25T16:50:41-05:00",
       "site": "S41",
-      "status": "pending",
+      "status": "expired",
       "threshold": 7.6,
       "upstream": 7.6
     },
